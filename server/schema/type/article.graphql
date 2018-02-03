@@ -1,0 +1,13 @@
+# A basic article.
+type Article {
+  # A unique identifier.
+  id: ID!
+  # The episode number of this film.
+  episode: Int!
+  # The name of this film's director.
+  directorName: String!
+  # The RFC3339 date format of the film release in the orginal creator country.
+  releaseDate: Time!
+  # The RFC3339 date format of the time that this resource was created.
+  createdAt: Time!
+}
