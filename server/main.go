@@ -7,8 +7,6 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	context "./context"
-
 	"github.com/neelance/graphql-go"
 	"github.com/neelance/graphql-go/relay"
 	"github.com/rs/cors"
@@ -41,10 +39,6 @@ func init() {
 }
 
 func main() {
-
-	// Todo: use the context in http handlers
-	ctx := context.CustomContext()
-	fmt.Println(ctx)
 
 	// We will start a small server that reads our "graphiql.html" file and
 	// responds with it, so we are able to have our own graphiql
