@@ -42,7 +42,7 @@ func init() {
 
 func main() {
 
-	// Todo: use the context
+	// Todo: use the context in http handlers
 	ctx := context.CustomContext()
 	fmt.Println(ctx)
 
