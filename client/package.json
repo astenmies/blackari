@@ -1,0 +1,28 @@
+{
+  "name": "blackari-client",
+  "version": "3.0.3",
+  "description": "Blackari client uses Next.js with Relay Modern SSR",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./schema/schema.graphql",
+    "schema": "graphql get-schema dev"
+  },
+  "author": "Asten Mies",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
+    "isomorphic-unfetch": "^2.0.0",
+    "next": "^4.2.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-relay": "^1.4.1"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^1.4.1",
+    "graphql-cli": "^1.0.0-beta.4",
+    "relay-compiler": "^1.4.1"
+  }
+}
