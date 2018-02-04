@@ -13,6 +13,8 @@ type QueryResolver struct {
 	client *blapi.Client
 }
 
+// NewRoot gets client, the NewClient which is a pointer to the blapi Client
+// It returns a pointer to a QueryResolver to start preparing read operations
 func NewRoot(client *blapi.Client) (*QueryResolver, error) {
 	fmt.Println("RESOLVER QUERY NewRoot ----", &QueryResolver{client: client})
 	if client == nil {

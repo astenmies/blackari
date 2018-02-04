@@ -16,6 +16,8 @@ type Client struct {
 
 // NewClient ...
 func NewClient(c *http.Client) *Client {
+	// c forwards all headers set on the initial Request
+	// except Authorization and Cookie
 	if c == nil {
 		c = http.DefaultClient
 	}
