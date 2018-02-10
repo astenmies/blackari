@@ -24,7 +24,9 @@ func NewClient(c *http.Client) *Client {
 	return &Client{base: "https://blapi.co/api", http: c}
 }
 
+// TODO change REST api remote request to DB request
 func (c *Client) NewRequest(ctx context.Context, url string) (*http.Request, error) {
+	fmt.Println("BLAPI client url ---", url)
 	if len(url) == 0 {
 		return nil, errors.New("invalid empty-string url")
 	}
@@ -44,6 +46,7 @@ func (c *Client) NewRequest(ctx context.Context, url string) (*http.Request, err
 // Do the request.
 func (c *Client) Do(r *http.Request, v interface{}) (*http.Response, error) {
 	resp, err := c.http.Do(r)
+	fmt.Println("resp, err", resp, r)
 	if err != nil {
 		return nil, err
 	}

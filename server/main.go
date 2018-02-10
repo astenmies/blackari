@@ -1,26 +1,60 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
-	blapi "./blapi"
-	handler "./handler"
-	loader "./loader"
-	resolver "./resolver"
-	schema "./schema"
-	graphql "github.com/neelance/graphql-go"
-	"github.com/rs/cors"
+	mongo "./mongo"
+	"github.com/graphql-go/handler"
+	"github.com/nilstgmd/graphql-starter-kit/schema"
 	"github.com/spf13/viper"
+
+	_ "net/http/pprof"
 )
 
-// Documentation on how to print http requests
-// https://medium.com/doing-things-right/pretty-printing-http-requests-in-golang-a918d5aaa000
+func main() {
+	// 1 Get the global config
+	var (
+		appName = viper.Get("app-name").(string)
+		appHost = viper.Get("port").(string)
+	)
 
-// This function runs at the start of the program
+	// Creates a GraphQL-go HTTP handler with the defined schema
+	handler := handler.New(&handler.Config{
+		Schema: &schema.Schema,
+		Pretty: true,
+	})
+
+	// serve a GraphQL endpoint at `/graphql`
+	http.Handle("/graphql", handler)
+
+	// serve a graphiql IDE
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/", fs)
+
+	go func() {
+		log.Println("Starting", appName, "on http://localhost:"+appHost)
+		http.ListenAndServe(":9000", nil)
+	}()
+
+	signalChan := make(chan os.Signal, 1)
+	cleanupDone := make(chan bool)
+	signal.Notify(signalChan, os.Interrupt, syscall.SIGTERM, syscall.SIGKILL)
+	go func() {
+		for _ = range signalChan {
+			log.Println("Received an interrupt, stopping GraphQL Server...")
+			cleanup()
+			cleanupDone <- true
+		}
+	}()
+
+	<-cleanupDone
+}
+
 func init() {
-
 	// Initialize viper
 	// We can then call viper.Get("string") anywhere
 	viper.SetConfigName("Config")
@@ -29,50 +63,12 @@ func init() {
 	if err != nil {
 		log.Fatalf("Fatal error config file: %s \n", err)
 	}
+
+	mongo.Init()
+	// cassandra.Init()
 }
 
-func main() {
-
-	// 1 Get the global config
-	var (
-		appName = viper.Get("app-name").(string)
-	)
-
-	// 2 Pass the Request
-	// The Client will forward all headers set on the
-	// initial Request except Authorization and Cookie
-	c := blapi.NewClient(http.DefaultClient) // TODO: don't use the default client.
-
-	// 3 Prepare to read
-	// root an entry point for all top-level read operations.
-	root, err := resolver.NewRoot(c)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// 4 Create the request handler; inject dependencies.
-	h := handler.GraphQL{
-		// Parse and validate schema. Panic if unable to do so.
-		Schema:  graphql.MustParseSchema(schema.String(), root),
-		Loaders: loader.Initialize(c),
-	}
-
-	// 4 Start a small server that reads our "graphiql.html" file and
-	// responds with it, so we are able to have our own graphiql
-	// https://medium.com/@matryer/the-http-handler-wrapper-technique-in-golang-updated-bc7fbcffa702
-	// http://echorand.me/dissecting-golangs-handlerfunc-handle-and-defaultservemux.html
-	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "graphiql.html")
-	}))
-
-	// 5 h to handle all requests to /query
-	http.Handle("/query", h)
-
-	// 6 Use h as handler for all incoming requests to /graphql
-	// We wrap this in cors to attach cross-origin headers to our handler
-	http.Handle("/graphql", cors.Default().Handler(h))
-
-	// 7 Start the server by using ListenAndServe and we log if we have any error, hope not!
-	fmt.Println(appName, "listening at http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+func cleanup() {
+	mongo.Cleanup()
+	// cassandra.Cleanup()
 }

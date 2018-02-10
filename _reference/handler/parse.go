@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -11,13 +12,13 @@ import (
 func parse(r *http.Request) (request, error) {
 	// We always need to read and close the request body.
 	body, err := ioutil.ReadAll(r.Body)
+	fmt.Println("HANDLER parse body ---", string(body))
 	if err != nil {
 		return request{}, errors.New("unable to read request body")
 	}
 	_ = r.Body.Close()
 
 	var req request
-
 	switch r.Method {
 	case "POST":
 		req = parsePost(body)
