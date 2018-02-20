@@ -8,16 +8,17 @@ import (
 	"syscall"
 
 	mongo "./mongo"
+	"./resolver"
+	"./schema"
 
 	"github.com/neelance/graphql-go"
-	"github.com/neelance/graphql-go/example/starwars"
 	"github.com/neelance/graphql-go/relay"
 
 	"github.com/spf13/viper"
 	_ "net/http/pprof"
 )
 
-var schema *graphql.Schema
+var graphqlSchema *graphql.Schema
 
 func init() {
 	// Initialize viper
@@ -30,18 +31,16 @@ func init() {
 	}
 
 	mongo.Init()
-	// cassandra.Init()
 
 	// Creates a GraphQL-go HTTP handler with the defined schema
-	schema = graphql.MustParseSchema(starwars.Schema, &starwars.Resolver{})
+	graphqlSchema = graphql.MustParseSchema(schema.GetRootSchema(), &resolver.Resolver{})
+
 }
 
 func cleanup() {
 	mongo.Cleanup()
-	// cassandra.Cleanup()
 }
 
-// use the graphql-go-starwars example
 func main() {
 	// 1 Get the global config
 	var (
@@ -50,8 +49,8 @@ func main() {
 	)
 
 	// serve a GraphQL endpoint at `/graphql`
-	http.Handle("/graphql", &relay.Handler{Schema: schema})
-	http.Handle("/query", &relay.Handler{Schema: schema})
+	http.Handle("/graphql", &relay.Handler{Schema: graphqlSchema})
+	http.Handle("/query", &relay.Handler{Schema: graphqlSchema})
 
 	// serve a graphiql IDE
 	fs := http.FileServer(http.Dir("static"))

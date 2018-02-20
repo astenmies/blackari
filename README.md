@@ -16,6 +16,29 @@ cd blackari
 mv client/.env.example client/.env
 ```
 
+## Initialize the schema
+
+Install go-bindata
+```bash
+go get -u github.com/jteeuwen/go-bindata/...
+```
+
+Run the following command at root directory to generate Go code from .graphql file
+```bash
+# In blackari/server
+
+go-bindata -ignore=\.go -pkg=schema -o=schema/bindata.go schema/...
+```
+
+OR
+
+```bash
+# In blackari/server
+
+go generate ./schema
+```
+There would be bindata.go generated under `schema` folder
+
 ## Start the server
 
 ```bash
@@ -56,6 +79,8 @@ https://github.com/zeit/next.js/tree/9320d9f006164f2e997982ce76e80122049ccb3c/ex
 
 
 ## Troubleshooting
+
+
 
 ### SyntaxError: Unexpected token import
 This is almost always related to babel presets.
