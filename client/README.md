@@ -36,6 +36,8 @@ https://github.com/zeit/next.js/tree/9320d9f006164f2e997982ce76e80122049ccb3c/ex
 ### SyntaxError: Unexpected token import
 This is almost always related to babel presets.
 ```bash
+# In blackari/client
+
 yarn add babel-preset-es2015 -D
 ```
 Then add it in **.babelrc**. This is an example of a full minimal babel config file.

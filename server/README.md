@@ -29,6 +29,8 @@ There would be bindata.go generated under `schema` folder
 # Get realize in order to watch changes in go apps
 go get github.com/tockins/realize
 
+# In blackari/server
+
 # Start the server with realize
 realize start --run --no-config
 ```
