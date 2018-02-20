@@ -8,13 +8,40 @@ import (
 	"syscall"
 
 	mongo "./mongo"
-	"github.com/graphql-go/handler"
-	"github.com/nilstgmd/graphql-starter-kit/schema"
-	"github.com/spf13/viper"
 
+	"github.com/neelance/graphql-go"
+	"github.com/neelance/graphql-go/example/starwars"
+	"github.com/neelance/graphql-go/relay"
+
+	"github.com/spf13/viper"
 	_ "net/http/pprof"
 )
 
+var schema *graphql.Schema
+
+func init() {
+	// Initialize viper
+	// We can then call viper.Get("string") anywhere
+	viper.SetConfigName("Config")
+	viper.AddConfigPath(".")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Fatalf("Fatal error config file: %s \n", err)
+	}
+
+	mongo.Init()
+	// cassandra.Init()
+
+	// Creates a GraphQL-go HTTP handler with the defined schema
+	schema = graphql.MustParseSchema(starwars.Schema, &starwars.Resolver{})
+}
+
+func cleanup() {
+	mongo.Cleanup()
+	// cassandra.Cleanup()
+}
+
+// use the graphql-go-starwars example
 func main() {
 	// 1 Get the global config
 	var (
@@ -22,14 +49,9 @@ func main() {
 		appHost = viper.Get("port").(string)
 	)
 
-	// Creates a GraphQL-go HTTP handler with the defined schema
-	handler := handler.New(&handler.Config{
-		Schema: &schema.Schema,
-		Pretty: true,
-	})
-
 	// serve a GraphQL endpoint at `/graphql`
-	http.Handle("/graphql", handler)
+	http.Handle("/graphql", &relay.Handler{Schema: schema})
+	http.Handle("/query", &relay.Handler{Schema: schema})
 
 	// serve a graphiql IDE
 	fs := http.FileServer(http.Dir("static"))
@@ -52,23 +74,4 @@ func main() {
 	}()
 
 	<-cleanupDone
-}
-
-func init() {
-	// Initialize viper
-	// We can then call viper.Get("string") anywhere
-	viper.SetConfigName("Config")
-	viper.AddConfigPath(".")
-	err := viper.ReadInConfig()
-	if err != nil {
-		log.Fatalf("Fatal error config file: %s \n", err)
-	}
-
-	mongo.Init()
-	// cassandra.Init()
-}
-
-func cleanup() {
-	mongo.Cleanup()
-	// cassandra.Cleanup()
 }
