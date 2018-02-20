@@ -13,7 +13,7 @@ git clone https://github.com/astenmies/blackari.git
 cd blackari
 
 # Rename .env.example to .env and fill it with your configs
-mv client/.env.example client/.env
+cp client/.env.example client/.env
 ```
 
 ## [Server docs](./server)

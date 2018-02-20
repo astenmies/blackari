@@ -47,3 +47,4 @@ go test ./test
 - https://github.com/tonyghita/graphql-go-example
 - https://github.com/nilstgmd/graphql-starter-kit
 - https://github.com/OscarYuen/go-graphql-starter
+- https://blog.alexellis.io/golang-writing-unit-tests
