@@ -1,0 +1,6 @@
+type Article {
+		# The ID of the article
+		id: ID!
+		# The title of the article
+		title: String!
+}
