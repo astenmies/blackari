@@ -6,6 +6,7 @@ import (
 
 type article struct {
 	ID    graphql.ID
+	Slug  string
 	Title string
 }
 
@@ -16,14 +17,17 @@ type articleResolver struct {
 var articles = []*article{
 	{
 		ID:    "1",
+		Slug:  "first-article",
 		Title: "First article",
 	},
 	{
 		ID:    "2",
+		Slug:  "second-article",
 		Title: "Second article",
 	},
 	{
 		ID:    "3",
+		Slug:  "third-article",
 		Title: "Third article",
 	},
 }
@@ -46,6 +50,10 @@ func (r *Resolver) Article(args struct{ ID graphql.ID }) *articleResolver {
 
 func (r *articleResolver) ID() graphql.ID {
 	return r.s.ID
+}
+
+func (r *articleResolver) Slug() string {
+	return r.s.Slug
 }
 
 func (r *articleResolver) Title() string {

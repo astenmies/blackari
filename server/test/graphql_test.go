@@ -30,3 +30,35 @@ func TestHelloWorld(t *testing.T) {
 		},
 	})
 }
+
+func TestFragments(t *testing.T) {
+	gqltesting.RunTests(t, []*gqltesting.Test{
+		{
+			Schema: graphqlSchema,
+			Query: `
+				{
+					one: article(id: 1) {
+					...whatever
+					}
+					two: article(id: 2) {
+					...whatever
+					}
+				}
+				
+				fragment whatever on Article {
+					title
+				}
+			`,
+			ExpectedResult: `
+				{
+					"one": {
+						"title": "First article"
+					},
+					"two": {
+						"title": "Second article"
+					}
+				}
+			`,
+		},
+	})
+}
