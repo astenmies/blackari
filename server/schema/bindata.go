@@ -4,6 +4,7 @@
 // schema/schema.graphql
 // schema/type/article.graphql
 // schema/type/hello.graphql
+// schema/type/post.graphql
 // DO NOT EDIT!
 
 package schema
@@ -71,7 +72,7 @@ func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
 
-var _schemaQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x24\xcb\x31\x0a\x02\x31\x10\x85\xe1\x3e\xa7\x78\x8b\x8d\x36\x1e\x20\x9d\x60\x63\x29\x7a\x81\x45\x9f\x66\x60\x98\x84\xc9\x58\x04\xf1\xee\xc2\xa6\xfd\xf8\xff\x1d\xee\x85\xb8\x7e\xe8\x03\x31\x1a\xe1\x6c\xce\x4e\x8b\x8e\x55\x15\xf5\x85\x28\x04\x2d\x7c\xa0\x55\xb1\xe8\xc7\xb4\x85\xf3\xf9\x26\x00\x28\x54\xad\x19\xb7\x70\xb1\xf7\xb2\xd1\xea\x21\x0f\xe5\x5e\x9e\x19\x97\xf3\x72\xc8\x38\x4d\x49\xbf\x7f\x00\x00\x00\xff\xff\xb6\x51\x25\xa9\x74\x00\x00\x00")
+var _schemaQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x4c\xcb\x31\x0a\x02\x31\x10\x85\xe1\x7e\x4f\xf1\x16\x1b\x6d\x3c\x40\x3a\xc1\xc6\x4e\xd1\x0b\x2c\xfa\x34\x81\x21\x13\x66\xc6\x22\x88\x77\x17\xb2\x8d\xed\xff\xbd\xb7\xc1\x2d\x13\x97\x37\xad\x23\x7a\x23\x8c\xcd\xe8\xac\xe1\x58\x44\xa0\x4f\x44\x26\x58\xc3\x3a\x9a\x96\x1a\xbe\x9f\xc6\x70\xfd\x7c\x26\x00\xc8\x14\xd1\x84\x6b\x58\xa9\xaf\x79\xa4\xc5\xa2\xdc\x85\xdb\xf2\x48\x38\x1d\xe7\x5d\xc2\x61\x2d\x43\x9b\x7a\xfc\xd1\x59\x3d\xa6\xef\x2f\x00\x00\xff\xff\x73\xc1\x64\x42\x8c\x00\x00\x00")
 
 func schemaQueryGraphqlBytes() ([]byte, error) {
 	return bindataRead(
@@ -86,7 +87,7 @@ func schemaQueryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "schema/query.graphql", size: 116, mode: os.FileMode(436), modTime: time.Unix(1519241699, 0)}
+	info := bindataFileInfo{name: "schema/query.graphql", size: 140, mode: os.FileMode(436), modTime: time.Unix(1519329122, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -151,6 +152,26 @@ func schemaTypeHelloGraphql() (*asset, error) {
 	return a, nil
 }
 
+var _schemaTypePostGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\xa9\x2c\x48\x55\x08\xc8\x2f\x2e\x51\xa8\xe6\xe2\xe4\x54\x56\x08\xc9\x48\x55\xf0\x74\x51\xc8\x4f\x53\x28\xc9\x48\x55\x28\xc8\x2f\x2e\xe1\xe2\xe4\xcc\x4c\xb1\x52\xf0\x74\x51\xe4\x52\x80\x02\x88\xb2\xe2\x9c\xd2\x74\x34\x85\x20\x21\x2b\x85\xe0\x92\xa2\xcc\xbc\x74\x45\xb8\x79\x25\x99\x25\x39\xa9\x28\x2a\x61\x06\x81\x65\x10\x1a\x6a\x01\x01\x00\x00\xff\xff\x9d\x1c\x48\x7c\x8e\x00\x00\x00")
+
+func schemaTypePostGraphqlBytes() ([]byte, error) {
+	return bindataRead(
+		_schemaTypePostGraphql,
+		"schema/type/post.graphql",
+	)
+}
+
+func schemaTypePostGraphql() (*asset, error) {
+	bytes, err := schemaTypePostGraphqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "schema/type/post.graphql", size: 142, mode: os.FileMode(436), modTime: time.Unix(1519329110, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
 // Asset loads and returns the asset for the given name.
 // It returns an error if the asset could not be found or
 // could not be loaded.
@@ -207,6 +228,7 @@ var _bindata = map[string]func() (*asset, error){
 	"schema/schema.graphql": schemaSchemaGraphql,
 	"schema/type/article.graphql": schemaTypeArticleGraphql,
 	"schema/type/hello.graphql": schemaTypeHelloGraphql,
+	"schema/type/post.graphql": schemaTypePostGraphql,
 }
 
 // AssetDir returns the file names below a certain
@@ -255,6 +277,7 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"type": &bintree{nil, map[string]*bintree{
 			"article.graphql": &bintree{schemaTypeArticleGraphql, map[string]*bintree{}},
 			"hello.graphql": &bintree{schemaTypeHelloGraphql, map[string]*bintree{}},
+			"post.graphql": &bintree{schemaTypePostGraphql, map[string]*bintree{}},
 		}},
 	}},
 }}

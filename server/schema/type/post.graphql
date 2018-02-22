@@ -1,0 +1,8 @@
+type Post {
+		# The ID of the post
+		id: ID!
+        # The slug of the post
+		slug: String!
+		# The title of the post
+        title: String!
+}
