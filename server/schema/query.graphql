@@ -2,5 +2,5 @@
 type Query {
     hello: String!
     article(id: ID!): Article
-    post(id: ID!): Post
+    post(slug: String!): Post
 }

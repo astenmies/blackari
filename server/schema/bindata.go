@@ -72,7 +72,7 @@ func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
 
-var _schemaQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x4c\xcb\x31\x0a\x02\x31\x10\x85\xe1\x7e\x4f\xf1\x16\x1b\x6d\x3c\x40\x3a\xc1\xc6\x4e\xd1\x0b\x2c\xfa\x34\x81\x21\x13\x66\xc6\x22\x88\x77\x17\xb2\x8d\xed\xff\xbd\xb7\xc1\x2d\x13\x97\x37\xad\x23\x7a\x23\x8c\xcd\xe8\xac\xe1\x58\x44\xa0\x4f\x44\x26\x58\xc3\x3a\x9a\x96\x1a\xbe\x9f\xc6\x70\xfd\x7c\x26\x00\xc8\x14\xd1\x84\x6b\x58\xa9\xaf\x79\xa4\xc5\xa2\xdc\x85\xdb\xf2\x48\x38\x1d\xe7\x5d\xc2\x61\x2d\x43\x9b\x7a\xfc\xd1\x59\x3d\xa6\xef\x2f\x00\x00\xff\xff\x73\xc1\x64\x42\x8c\x00\x00\x00")
+var _schemaQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x3c\xcb\xb1\x0a\xc2\x30\x14\x85\xe1\xbd\x4f\x71\x8a\x4b\xbb\xf8\x00\xd9\x04\x17\x37\x45\x5f\xa0\xe8\xb1\x09\x5c\x92\x70\xef\xed\x10\xc4\x77\x17\x52\x70\xfd\xcf\xf9\x0e\x78\x44\xe2\xb6\x51\x1b\xbc\x55\x42\x59\x95\xc6\xec\x86\x45\x04\xe5\x0d\x8f\x04\xb3\x6b\x43\x2d\x29\xbb\x1d\x87\x7e\xdc\xcd\x67\x00\x80\x48\x91\x12\x70\x77\x4d\x79\x1d\x7b\x5a\xd4\xd3\x53\x38\xa5\x57\xc0\xe5\x3c\xce\x01\xa7\xbd\xf4\xb5\x16\xf3\xc9\x64\x5b\xff\x68\x0e\xb8\x16\xf3\xe1\xfb\x0b\x00\x00\xff\xff\x0a\x9b\x9b\x6c\x92\x00\x00\x00")
 
 func schemaQueryGraphqlBytes() ([]byte, error) {
 	return bindataRead(
@@ -87,7 +87,7 @@ func schemaQueryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "schema/query.graphql", size: 140, mode: os.FileMode(436), modTime: time.Unix(1519336066, 0)}
+	info := bindataFileInfo{name: "schema/query.graphql", size: 146, mode: os.FileMode(436), modTime: time.Unix(1519431668, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -224,11 +224,11 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"schema/query.graphql":        schemaQueryGraphql,
-	"schema/schema.graphql":       schemaSchemaGraphql,
+	"schema/query.graphql": schemaQueryGraphql,
+	"schema/schema.graphql": schemaSchemaGraphql,
 	"schema/type/article.graphql": schemaTypeArticleGraphql,
-	"schema/type/hello.graphql":   schemaTypeHelloGraphql,
-	"schema/type/post.graphql":    schemaTypePostGraphql,
+	"schema/type/hello.graphql": schemaTypeHelloGraphql,
+	"schema/type/post.graphql": schemaTypePostGraphql,
 }
 
 // AssetDir returns the file names below a certain
@@ -270,15 +270,14 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
-
 var _bintree = &bintree{nil, map[string]*bintree{
 	"schema": &bintree{nil, map[string]*bintree{
-		"query.graphql":  &bintree{schemaQueryGraphql, map[string]*bintree{}},
+		"query.graphql": &bintree{schemaQueryGraphql, map[string]*bintree{}},
 		"schema.graphql": &bintree{schemaSchemaGraphql, map[string]*bintree{}},
 		"type": &bintree{nil, map[string]*bintree{
 			"article.graphql": &bintree{schemaTypeArticleGraphql, map[string]*bintree{}},
-			"hello.graphql":   &bintree{schemaTypeHelloGraphql, map[string]*bintree{}},
-			"post.graphql":    &bintree{schemaTypePostGraphql, map[string]*bintree{}},
+			"hello.graphql": &bintree{schemaTypeHelloGraphql, map[string]*bintree{}},
+			"post.graphql": &bintree{schemaTypePostGraphql, map[string]*bintree{}},
 		}},
 	}},
 }}
@@ -329,3 +328,4 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+

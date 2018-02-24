@@ -36,9 +36,10 @@ func Init() {
 	// )
 
 	// Example from https://blog.golang.org
-	err = collection.Insert(bson.M{"ID": "1", "title": "Cool post", "slug": "cool-post"},
-		bson.M{"ID": "2", "title": "Super post", "slug": "super-post"},
-		bson.M{"ID": "3", "title": "Great post", "slug": "great-post"},
+	err = collection.Insert(
+		bson.M{"ID": "1", "title": "First post", "slug": "first-post"},
+		bson.M{"ID": "2", "title": "Second post", "slug": "second-post"},
+		bson.M{"ID": "3", "title": "Third post", "slug": "third-post"},
 	)
 
 	if err != nil {
