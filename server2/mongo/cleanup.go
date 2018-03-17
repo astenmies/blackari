@@ -9,11 +9,24 @@ import (
 // Cleanup will remove all mock data from the database.
 func Cleanup() {
 	log.Println("Cleaning up MongoDB...")
-	session, collection := Get("post")
-	defer session.Close()
 
-	_, err := collection.RemoveAll(bson.M{})
-	if err != nil {
-		log.Fatal(err)
+	// The collections to cleanup
+	collections := []string{"post"}
+
+	// Cleanup each collection
+	for _, coll := range collections {
+
+		session, collection := Get(coll)
+		defer session.Close()
+
+		// Remove everything inside the collection
+		_, err := collection.RemoveAll(bson.M{})
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		// Confirm
+		log.Println("Cleaned collection", coll)
 	}
 }

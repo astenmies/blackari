@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 
 	mongo "./mongo"
 	utils "./utils"
 	"github.com/neelance/graphql-go"
 	"github.com/neelance/graphql-go/relay"
 	"github.com/rs/cors"
+	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -23,8 +25,10 @@ func main() {
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
+	port := viper.GetInt("blackari.server.port")
+	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
 	// ListenAndServe starts an HTTP server with a given address and handler.
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(goPort, nil))
 }
 
 //////// GRAPHQL ////////
@@ -48,12 +52,14 @@ var Schema = `
 
 //////// INIT ////////
 func init() {
+	// Init global config
 	utils.InitViper()
 
 	// MustParseSchema parses a GraphQL schema and attaches the given root resolver.
 	// It returns an error if the Go type signature of the resolvers does not match the schema.
 	graphqlSchema = graphql.MustParseSchema(Schema, &Resolver{})
 
+	// Insert dummy data into mongodb
 	mongo.Dummy()
 }
 
