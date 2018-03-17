@@ -1,67 +1,45 @@
+// Embedded in this article https://medium.com/p/c98e491015b6
 package main
 
 import (
 	"log"
 	"net/http"
+	"strconv"
 
-	"fmt"
-	"io/ioutil"
-
+	gqlResolver "./gqlResolver"
+	gqlSchema "./gqlSchema"
+	mongo "./mongo"
+	utils "./utils"
 	"github.com/neelance/graphql-go"
 	"github.com/neelance/graphql-go/relay"
 	"github.com/rs/cors"
+	"github.com/spf13/viper"
 )
 
-// This will be use by our handler at /graphql
-var schema *graphql.Schema
-
-// Documentation on how to print http requests
-// https://medium.com/doing-things-right/pretty-printing-http-requests-in-golang-a918d5aaa000
-
-// This function runs at the start of the program
-func init() {
-
-	// We get the schema from the file, rather than having the schema inline here
-	// I think will lead to better organizaiton of our own code
-	schemaFile, err := ioutil.ReadFile("schema.graphql")
-	if err != nil {
-		// We will panic if we don't find the schema.graphql file in our server
-		panic(err)
-	}
-
-	// We will use graphql-go library to parse our schema from "schema.graphql"
-	// and the resolver is our struct that should fullfill everything in the Query
-	// from our schema
-	schema, err = graphql.ParseSchema(string(schemaFile), &Resolver{})
-	if err != nil {
-		panic(err)
-	}
-}
-
+//////// MAIN ////////
 func main() {
+	// Create a handler for /graphql which passes cors for remote requests
+	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: gqlSchema.GraphqlSchema}))
 
-	// We will start a small server that reads our "graphiql.html" file and
-	// responds with it, so we are able to have our own graphiql
-	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "graphiql.html")
-	}))
+	// Write a GraphiQL page to /
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/", fs)
 
-	http.Handle("/query", &relay.Handler{Schema: schema})
-
-	// This is where our graphql server is handled, we declare "/graphql" as the route
-	// where all our graphql requests will be directed to
-	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: schema}))
-
-	// We start the server by using ListenAndServe and we log if we have any error, hope not!
-	fmt.Println(" listening at http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	port := viper.GetInt("blackari.server.port")
+	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
+	// ListenAndServe starts an HTTP server with a given address and handler.
+	log.Fatal(http.ListenAndServe(goPort, nil))
 }
 
-// Resolver struct is the main resolver  wich we will use to fullfill
-// queries and mutations that our schema.graphql defines
-type Resolver struct{}
+//////// INIT ////////
+func init() {
+	// Init global config
+	utils.InitViper()
 
-// Hello function resolves to hello: String! in the Query object in our schema.graphql
-func (r *Resolver) Hello() string {
-	return "world"
+	// MustParseSchema parses a GraphQL schema and attaches the given root resolver.
+	// It returns an error if the Go type signature of the resolvers does not match the schema.
+	gqlSchema.GraphqlSchema = graphql.MustParseSchema(gqlSchema.GetRootSchema(), &gqlResolver.Resolver{})
+
+	// Insert dummy data into mongodb
+	mongo.Dummy()
 }

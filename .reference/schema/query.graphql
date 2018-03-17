@@ -1,0 +1,5 @@
+# The Query type represents all of the entry points into the API.
+type Query {
+  # Search for a article by its title, or get all films when no parameters are provided.
+  articles(title: String): [Article!]
+}

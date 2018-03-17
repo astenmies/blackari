@@ -1,0 +1,21 @@
+{
+    "count": 2,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "title": "A New Hope",
+            "episode_id": 4,
+            "director": "George Lucas",
+            "release_date": "1977-05-25",
+            "created": "2014-12-10T14:23:31.880000Z"
+        },
+        {
+            "title": "Attack of the Clones",
+            "episode_id": 2,
+            "director": "George Lucas",
+            "release_date": "2002-05-16",
+            "created": "2014-12-20T10:57:57.886000Z"
+        }
+    ]
+}

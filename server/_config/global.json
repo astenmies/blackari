@@ -1,0 +1,12 @@
+{
+    "blackari": {
+        "server": {
+            "port": 8080
+        },
+        "mongo": {
+            "host": "localhost",
+            "dbName": "blackari",
+            "maxWait": 5
+        }
+    }
+}
