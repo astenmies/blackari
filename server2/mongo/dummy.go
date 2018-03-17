@@ -6,6 +6,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+// Dummy inserts data into mongodb
 func Dummy() {
 	log.Println("Seeding mock data to MongoDB")
 	// Call mongo Get, session and reference to the post collection
