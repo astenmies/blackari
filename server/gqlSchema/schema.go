@@ -1,11 +1,17 @@
 //go:generate go-bindata -ignore=\.go -pkg=schema -o=bindata.go ./...
-package schema
+package gqlSchema
 
 import (
 	"bytes"
+
+	"github.com/neelance/graphql-go"
 )
 
+var GraphqlSchema *graphql.Schema
+
+// GetRootSchema describes the data that we ask for
 func GetRootSchema() string {
+
 	buf := bytes.Buffer{}
 	for _, name := range AssetNames() {
 		b := MustAsset(name)

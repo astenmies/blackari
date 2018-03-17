@@ -1,72 +1,15 @@
-// Embedded in this article https://medium.com/p/c98e491015b6
-package main
+package gqlResolver
 
 import (
 	"fmt"
-	"log"
-	"net/http"
-	"strconv"
 
-	mongo "./mongo"
-	utils "./utils"
+	mongo "../mongo"
 	"github.com/neelance/graphql-go"
-	"github.com/neelance/graphql-go/relay"
-	"github.com/rs/cors"
-	"github.com/spf13/viper"
 	"gopkg.in/mgo.v2/bson"
 )
 
-//////// MAIN ////////
-func main() {
-	// Create a handler for /graphql which passes cors for remote requests
-	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: graphqlSchema}))
-
-	// Write a GraphiQL page to /
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
-
-	port := viper.GetInt("blackari.server.port")
-	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
-	// ListenAndServe starts an HTTP server with a given address and handler.
-	log.Fatal(http.ListenAndServe(goPort, nil))
-}
-
-//////// GRAPHQL ////////
-var graphqlSchema *graphql.Schema
-
-// Schema describes the data that we ask for
-var Schema = `
-    schema {
-        query: Query
-    }
-    # The Query type represents all of the entry points.
-    type Query {
-        post(slug: String!): Post
-    }
-    type Post {
-        id: ID!
-        slug: String!
-        title: String!
-    }
-    `
-
-//////// INIT ////////
-func init() {
-	// Init global config
-	utils.InitViper()
-
-	// MustParseSchema parses a GraphQL schema and attaches the given root resolver.
-	// It returns an error if the Go type signature of the resolvers does not match the schema.
-	graphqlSchema = graphql.MustParseSchema(Schema, &Resolver{})
-
-	// Insert dummy data into mongodb
-	mongo.Dummy()
-}
-
-//////// RESOLVER ////////
 // In order to respond to queries, a schema needs to have resolve functions for all fields.
 // Go’s structs are typed collections of fields. They’re useful for grouping data together to form records.
-type Resolver struct{}
 
 type post struct {
 	ID    graphql.ID

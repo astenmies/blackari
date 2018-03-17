@@ -1,74 +1,45 @@
+// Embedded in this article https://medium.com/p/c98e491015b6
 package main
 
 import (
+	"log"
+	"net/http"
+	"strconv"
+
+	gqlResolver "./gqlResolver"
+	gqlSchema "./gqlSchema"
 	mongo "./mongo"
-	"./resolver"
-	"./schema"
+	utils "./utils"
 	"github.com/neelance/graphql-go"
 	"github.com/neelance/graphql-go/relay"
 	"github.com/rs/cors"
 	"github.com/spf13/viper"
-	"log"
-	"net/http"
-	_ "net/http/pprof"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
-var graphqlSchema *graphql.Schema
-
-func init() {
-	// Initialize viper
-	// We can then call viper.Get("string") anywhere
-	viper.SetConfigName("Config")
-	viper.AddConfigPath(".")
-	err := viper.ReadInConfig()
-	if err != nil {
-		log.Fatalf("Fatal error config file: %s \n", err)
-	}
-
-	mongo.Init()
-
-	// Creates a GraphQL-go HTTP handler with the defined schema
-	graphqlSchema = graphql.MustParseSchema(schema.GetRootSchema(), &resolver.Resolver{})
-
-}
-
-func cleanup() {
-	mongo.Cleanup()
-}
-
+//////// MAIN ////////
 func main() {
-	// 1 Get the global config
-	var (
-		appName = viper.Get("app-name").(string)
-		appHost = viper.Get("port").(string)
-	)
+	// Create a handler for /graphql which passes cors for remote requests
+	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: gqlSchema.GraphqlSchema}))
 
-	// serve a GraphQL endpoint at `/graphql`
-	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: graphqlSchema}))
-	http.Handle("/query", &relay.Handler{Schema: graphqlSchema})
-
-	// serve a graphiql IDE
+	// Write a GraphiQL page to /
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
-	go func() {
-		log.Println("Starting", appName, "on http://localhost:"+appHost)
-		http.ListenAndServe(":9000", nil)
-	}()
+	port := viper.GetInt("blackari.server.port")
+	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
+	// ListenAndServe starts an HTTP server with a given address and handler.
+	log.Fatal(http.ListenAndServe(goPort, nil))
+}
 
-	signalChan := make(chan os.Signal, 1)
-	cleanupDone := make(chan bool)
-	signal.Notify(signalChan, os.Interrupt, syscall.SIGTERM, syscall.SIGKILL)
-	go func() {
-		for _ = range signalChan {
-			log.Println("Received an interrupt, stopping GraphQL Server...")
-			cleanup()
-			cleanupDone <- true
-		}
-	}()
+//////// INIT ////////
+func init() {
+	// Init global config
+	utils.InitViper()
 
-	<-cleanupDone
+	// MustParseSchema parses a GraphQL schema and attaches the given root resolver.
+	// It returns an error if the Go type signature of the resolvers does not match the schema.
+	gqlSchema.GraphqlSchema = graphql.MustParseSchema(gqlSchema.GetRootSchema(), &gqlResolver.Resolver{})
+
+	// Insert dummy data into mongodb
+	mongo.Dummy()
 }

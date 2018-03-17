@@ -1,3 +1,3 @@
-package resolver
+package gqlResolver
 
 type Resolver struct{}

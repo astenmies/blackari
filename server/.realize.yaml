@@ -8,11 +8,13 @@ server:
   port: 5002
   host: localhost
 schema:
-- name: server
+- name: server2
   path: .
   commands:
     run:
       status: true
+  args:
+  - main.go
   watcher:
     paths:
     - /
