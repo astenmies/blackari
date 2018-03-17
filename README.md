@@ -1,7 +1,7 @@
 # Blackari
 👻 A Go GraphQL server with a React SSR client (Next.js)
 
-WORK IN PROGRESS
+WORK IN PROGRESS.
 
 ## Getting started
 
