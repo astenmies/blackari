@@ -1,0 +1,9 @@
+{
+    "blackari": {
+        "mongo": {
+            "host": "localhost",
+            "dbName": "blackari",
+            "maxWait": 5
+        }
+    }
+}
