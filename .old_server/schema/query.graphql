@@ -1,0 +1,6 @@
+# The Query type represents all of the entry points.
+type Query {
+    hello: String!
+    article(id: ID!): Article
+    post(slug: String!): Post
+}
