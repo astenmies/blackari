@@ -1,0 +1,8 @@
+type Article {
+		# The ID of the article
+		id: ID!
+        # The slug of the article
+        slug: String!
+		# The title of the article
+		title: String!
+}
