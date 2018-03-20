@@ -3,7 +3,7 @@ package gqlResolver
 import (
 	"fmt"
 
-	mongo "../mongo"
+	mongo "github.com/astenmies/blackari/server/mongo"
 	"github.com/neelance/graphql-go"
 	"gopkg.in/mgo.v2/bson"
 )
