@@ -1,0 +1,7 @@
+# Represents a review for a review
+type Review {
+    # The number of stars this review gave, 1-5
+    stars: Int!
+    # Comment about review
+    commentary: String
+}
