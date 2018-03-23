@@ -49,6 +49,8 @@ func (r *Resolver) Post(args struct{ Slug string }) *postResolver {
 	if s := oneResult; s != nil {
 		return &postResolver{oneResult}
 	}
+
+	// If nothing was returned yet, return nil
 	return nil
 }
 

@@ -32,3 +32,5 @@ go test ./test
 - https://github.com/RichardKnop/go-oauth2-server
 - https://github.com/markbates/goth/blob/master/examples/main.go
 - https://github.com/graph-gophers/graphql-go/issues/47
+- SIGNUP: https://github.com/graph-gophers/graphql-go/issues/125
+- UNIQUE ID: https://blog.kowalczyk.info/article/JyRZ/generating-good-unique-ids-in-go.html
