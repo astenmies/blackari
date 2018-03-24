@@ -1,4 +1,5 @@
 # The Query type represents all of the entry points.
 type Query {
     post(slug: String!): Post
+    reviews(postSlug: String!): [Review]!
 }

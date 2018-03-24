@@ -1,0 +1,7 @@
+# The input object sent when someone is creating a new review
+input ReviewInput {
+    # 0-5 stars
+    stars: Int
+    # Comment about the post, optional
+    commentary: String
+}

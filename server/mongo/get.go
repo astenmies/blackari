@@ -23,9 +23,6 @@ func Get(c string) (*mgo.Session, *mgo.Collection) {
 	}
 
 	collection := session.DB(dbName).C(c)
-	if c == "" {
-		collection = session.DB(dbName).C("")
-	}
 
 	return session, collection
 }
