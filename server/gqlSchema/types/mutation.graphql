@@ -1,3 +1,3 @@
 type Mutation {
-    createReview(post: String!, review: ReviewInput!): Review
+    createReview(postSlug: String!, review: ReviewInput!): Review
 }

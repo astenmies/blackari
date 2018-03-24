@@ -1,10 +1,12 @@
 package gqlResolver
 
 import (
+	"fmt"
 	"log"
 	"reflect"
 
 	mongo "github.com/astenmies/blackari/server/mongo"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/rs/xid"
 )
 
@@ -16,9 +18,9 @@ type review struct {
 
 var reviews = make(map[string][]*review)
 
-func (r *Resolver) Reviews(args struct{ Post string }) []*reviewResolver {
+func (r *Resolver) Reviews(args struct{ PostSlug string }) []*reviewResolver {
 	var l []*reviewResolver
-	for _, review := range reviews[args.Post] {
+	for _, review := range reviews[args.PostSlug] {
 		l = append(l, &reviewResolver{review})
 	}
 	return l
@@ -29,22 +31,25 @@ func (m review) IsEmpty() bool {
 }
 
 func (r *Resolver) CreateReview(args *struct {
-	Post   string
-	Review *reviewInput
+	PostSlug string
+	Review   *reviewInput
 }) *reviewResolver {
-	review := &review{
+
+	newReview := &review{
 		Stars:      args.Review.Stars,
 		Commentary: args.Review.Commentary,
 	}
-	if review.IsEmpty() {
+
+	if reflect.DeepEqual(&args.Review, nil) {
+		fmt.Println("NOTHING")
 		return nil
 	}
 
-	// spew.Dump(args)
-	reviews[args.Post] = append(reviews[args.Post], review)
+	spew.Dump(args.Review)
+	reviews[args.PostSlug] = append(reviews[args.PostSlug], newReview)
 
 	userID := xid.New()
-	review.ID = userID.String()
+	newReview.ID = userID.String()
 	log.Println("Inserting review in mongo")
 	// Call mongo Get, session and reference to the post collection
 	session, collection := mongo.Get("review")
@@ -52,14 +57,14 @@ func (r *Resolver) CreateReview(args *struct {
 	defer session.Close()
 
 	// The mock data that we insert.
-	err := collection.Insert(review)
+	err := collection.Insert(newReview)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Println("Review inserted successfully!")
 
-	return &reviewResolver{review}
+	return &reviewResolver{newReview}
 }
 
 type reviewResolver struct {
