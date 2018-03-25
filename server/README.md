@@ -37,3 +37,4 @@ go test ./test
 - CONTEXT: https://go-talks.appspot.com/github.com/dkondratovych/golang-ua-meetup/go-context/ctx.slide#10
 - MONGO CONTEXT: https://github.com/guregu/db/blob/master/mongo.go
 - MONGO CONTEXT: https://gist.github.com/nmerouze/e0fe8a6883b9ff468810
+- MONGO DB CONTEXT: https://github.com/guregu/db

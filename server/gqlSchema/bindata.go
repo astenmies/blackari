@@ -128,7 +128,7 @@ func gqlschemaTypesQueryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 139, mode: os.FileMode(436), modTime: time.Unix(1521903432, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 139, mode: os.FileMode(436), modTime: time.Unix(1521940364, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
