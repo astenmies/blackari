@@ -1,7 +1,9 @@
 # Blackari
 👻 A Go GraphQL server with a React SSR client (Next.js)
 
-WORK IN PROGRESS
+**The master branch can be used as is. Please note that this is currently a work in progress, expect changes.**
+
+I advise to not use the next branch unless you would like to experiment or see where the project is going. The next branch sometimes contains broken code.
 
 ## Getting started
 
