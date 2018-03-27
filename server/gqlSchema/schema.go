@@ -4,7 +4,7 @@ package gqlSchema
 import (
 	"bytes"
 
-	"github.com/neelance/graphql-go"
+	"github.com/graph-gophers/graphql-go"
 )
 
 var GraphqlSchema *graphql.Schema
