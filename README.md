@@ -1,5 +1,5 @@
 # Lychee
-👻 A Go GraphQL server with a React SSR client (Next.js)
+A Go GraphQL server with a React SSR client (Next.js)
 
 **The master branch can be used as is. Please note that this is currently a work in progress, expect changes.**
 
