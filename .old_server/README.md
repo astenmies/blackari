@@ -1,4 +1,4 @@
-# BLACKARI Server
+# lychee Server
 
 ## Initialize the schema
 
@@ -9,7 +9,7 @@ go get -u github.com/jteeuwen/go-bindata/...
 
 Run the following command at root directory to generate Go code from .graphql file
 ```bash
-# In blackari/server
+# In lychee/server
 
 go-bindata -ignore=\.go -pkg=schema -o=schema/bindata.go schema/...
 ```
@@ -17,7 +17,7 @@ go-bindata -ignore=\.go -pkg=schema -o=schema/bindata.go schema/...
 OR
 
 ```bash
-# In blackari/server
+# In lychee/server
 
 go generate ./schema
 ```
@@ -29,7 +29,7 @@ There would be bindata.go generated under `schema` folder
 # Get realize in order to watch changes in go apps
 go get github.com/tockins/realize
 
-# In blackari/server
+# In lychee/server
 
 # Start the server with realize
 realize start --run --no-config
@@ -37,7 +37,7 @@ realize start --run --no-config
 
 ## Testing
 ```bash
-# In blackari/server
+# In lychee/server
 
 go test ./test
 ```

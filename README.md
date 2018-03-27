@@ -1,4 +1,4 @@
-# Blackari
+# Lychee
 👻 A Go GraphQL server with a React SSR client (Next.js)
 
 **The master branch can be used as is. Please note that this is currently a work in progress, expect changes.**
@@ -9,10 +9,10 @@ I advise to not use the next branch unless you would like to experiment or see w
 
 ```bash
 # Clone this repository
-git clone https://github.com/astenmies/blackari.git
+git clone https://github.com/astenmies/lychee.git
 
 # Change directory
-cd blackari
+cd lychee
 
 # Rename .env.example to .env and fill it with your configs
 cp client/.env.example client/.env

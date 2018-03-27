@@ -1,11 +1,11 @@
-# BLACKARI Client
+# lychee Client
 
 ## Start the client
 
 Make sure the server is running before generating the schema.
 
 ```bash
-# In blackari/client
+# In lychee/client
 
 # Install node dependencies
 yarn
@@ -36,7 +36,7 @@ https://github.com/zeit/next.js/tree/9320d9f006164f2e997982ce76e80122049ccb3c/ex
 ### SyntaxError: Unexpected token import
 This is almost always related to babel presets.
 ```bash
-# In blackari/client
+# In lychee/client
 
 yarn add babel-preset-es2015 -D
 ```

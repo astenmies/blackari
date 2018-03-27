@@ -23,7 +23,7 @@ class Hello extends React.Component {
                   return <div>{error.message}</div>;
                 } else if (props) {
             return (
-              <div>This comes from Blackari server:
+              <div>This comes from Lychee server:
                 <span style={{color: 'red'}}> {props.post.title}</span>
               </div>
               );
