@@ -1,19 +1,20 @@
 package main
 
 import (
-	mongo "./mongo"
-	"./resolver"
-	"./schema"
-	"github.com/neelance/graphql-go"
-	"github.com/neelance/graphql-go/relay"
-	"github.com/rs/cors"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
 	"os/signal"
 	"syscall"
+
+	mongo "./mongo"
+	"./resolver"
+	"./schema"
+	"github.com/graph-gophers/graphql-go"
+	"github.com/graph-gophers/graphql-go/relay"
+	"github.com/rs/cors"
+	"github.com/spf13/viper"
 )
 
 var graphqlSchema *graphql.Schema

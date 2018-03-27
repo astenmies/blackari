@@ -10,8 +10,8 @@ import (
 	gqlSchema "github.com/astenmies/blackari/server/gqlSchema"
 	mongo "github.com/astenmies/blackari/server/mongo"
 	utils "github.com/astenmies/blackari/server/utils"
-	"github.com/neelance/graphql-go"
-	"github.com/neelance/graphql-go/relay"
+	"github.com/graph-gophers/graphql-go"
+	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/rs/cors"
 	"github.com/spf13/viper"
 )

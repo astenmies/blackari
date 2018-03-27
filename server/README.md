@@ -14,7 +14,7 @@ go test ./test
 ```
 
 ## References
-- https://github.com/neelance/graphql-go
+- https://github.com/graph-gophers/graphql-go
 - https://github.com/tonyghita/graphql-go-example
 - https://github.com/nilstgmd/graphql-starter-kit
 - https://github.com/OscarYuen/go-graphql-starter
@@ -34,3 +34,7 @@ go test ./test
 - https://github.com/graph-gophers/graphql-go/issues/47
 - SIGNUP: https://github.com/graph-gophers/graphql-go/issues/125
 - UNIQUE ID: https://blog.kowalczyk.info/article/JyRZ/generating-good-unique-ids-in-go.html
+- CONTEXT: https://go-talks.appspot.com/github.com/dkondratovych/golang-ua-meetup/go-context/ctx.slide#10
+- MONGO CONTEXT: https://github.com/guregu/db/blob/master/mongo.go
+- MONGO CONTEXT: https://gist.github.com/nmerouze/e0fe8a6883b9ff468810
+- MONGO DB CONTEXT: https://github.com/guregu/db

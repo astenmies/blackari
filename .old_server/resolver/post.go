@@ -1,10 +1,11 @@
 package resolver
 
 import (
-	"../mongo"
 	"fmt"
 
-	graphql "github.com/neelance/graphql-go"
+	"../mongo"
+
+	graphql "github.com/graph-gophers/graphql-go"
 	"gopkg.in/mgo.v2/bson"
 )
 

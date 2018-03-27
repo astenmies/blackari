@@ -1,11 +1,12 @@
 package test
 
 import (
+	"testing"
+
 	"../resolver"
 	"../schema"
-	"github.com/neelance/graphql-go"
-	"github.com/neelance/graphql-go/gqltesting"
-	"testing"
+	"github.com/graph-gophers/graphql-go"
+	"github.com/graph-gophers/graphql-go/gqltesting"
 )
 
 var graphqlSchema = graphql.MustParseSchema(schema.GetRootSchema(), &resolver.Resolver{})

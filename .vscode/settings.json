@@ -1,6 +1,6 @@
 {
     "files.exclude": {
-        "**/.old_server": true,
+        // "**/.old_server": true,
         "**/.reference": true
     }
 }
