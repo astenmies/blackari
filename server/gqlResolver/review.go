@@ -1,9 +1,9 @@
 package gqlResolver
 
 import (
-	"github.com/astenmies/blackari/server/model"
-	"github.com/astenmies/blackari/server/service"
-	"github.com/astenmies/blackari/server/utils"
+	"github.com/astenmies/lychee/server/model"
+	"github.com/astenmies/lychee/server/service"
+	"github.com/astenmies/lychee/server/utils"
 )
 
 type reviewResolver model.ReviewResolver

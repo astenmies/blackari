@@ -1,8 +1,8 @@
 package gqlResolver
 
 import (
-	"github.com/astenmies/blackari/server/model"
-	"github.com/astenmies/blackari/server/service"
+	"github.com/astenmies/lychee/server/model"
+	"github.com/astenmies/lychee/server/service"
 	"github.com/graph-gophers/graphql-go"
 )
 

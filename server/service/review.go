@@ -3,8 +3,8 @@ package service
 import (
 	"log"
 
-	"github.com/astenmies/blackari/server/model"
-	"github.com/astenmies/blackari/server/mongo"
+	"github.com/astenmies/lychee/server/model"
+	"github.com/astenmies/lychee/server/mongo"
 	"github.com/rs/xid"
 )
 

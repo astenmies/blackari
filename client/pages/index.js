@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'react-relay'
 
-// Blackari refs
+// Lychee refs
 import Hello from '../components/Hello.js'
 import withData from '../lib/withData'
 

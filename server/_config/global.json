@@ -1,11 +1,11 @@
 {
-    "blackari": {
+    "lychee": {
         "server": {
             "port": 8080
         },
         "mongo": {
             "host": "localhost",
-            "dbName": "blackari",
+            "dbName": "lychee",
             "maxWait": 5
         }
     }

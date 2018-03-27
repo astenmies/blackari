@@ -3,8 +3,8 @@ package test
 import (
 	"testing"
 
-	"github.com/astenmies/blackari/server/gqlResolver"
-	"github.com/astenmies/blackari/server/gqlSchema"
+	"github.com/astenmies/lychee/server/gqlResolver"
+	"github.com/astenmies/lychee/server/gqlSchema"
 	graphql "github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/gqltesting"
 )

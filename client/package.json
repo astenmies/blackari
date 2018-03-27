@@ -1,7 +1,7 @@
 {
-  "name": "blackari-client",
+  "name": "lychee-client",
   "version": "3.0.3",
-  "description": "Blackari client uses Next.js with Relay Modern SSR",
+  "description": "Lychee client uses Next.js with Relay Modern SSR",
   "scripts": {
     "dev": "next",
     "build": "next build",

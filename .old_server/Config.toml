@@ -1,4 +1,4 @@
-app-name = "blackari-server"
+app-name = "lychee-server"
 version = 1.0
 port = ":9000"
 

@@ -1,4 +1,4 @@
-# BLACKARI Server
+# lychee Server
 
 ## Start the server
 
@@ -8,7 +8,7 @@
 
 ## Testing
 ```bash
-# In blackari/server
+# In lychee/server
 
 go test ./test
 ```

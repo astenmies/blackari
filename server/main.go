@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"strconv"
 
-	gqlResolver "github.com/astenmies/blackari/server/gqlResolver"
-	gqlSchema "github.com/astenmies/blackari/server/gqlSchema"
-	mongo "github.com/astenmies/blackari/server/mongo"
-	utils "github.com/astenmies/blackari/server/utils"
+	gqlResolver "github.com/astenmies/lychee/server/gqlResolver"
+	gqlSchema "github.com/astenmies/lychee/server/gqlSchema"
+	mongo "github.com/astenmies/lychee/server/mongo"
+	utils "github.com/astenmies/lychee/server/utils"
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
 	"github.com/rs/cors"
@@ -25,7 +25,7 @@ func main() {
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
-	port := viper.GetInt("blackari.server.port")
+	port := viper.GetInt("lychee.server.port")
 	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
 	// ListenAndServe starts an HTTP server with a given address and handler.
 	log.Fatal(http.ListenAndServe(goPort, nil))
