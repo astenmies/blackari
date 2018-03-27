@@ -1,12 +1,12 @@
 package utils
 
 import (
-	"github.com/spf13/viper"
 	"log"
+
+	"github.com/spf13/viper"
 )
 
 func InitViper() {
-	// Now we're sure global exists
 	viper.SetConfigName("global")
 	viper.AddConfigPath("_config")
 	err := viper.ReadInConfig()
