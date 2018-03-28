@@ -3,7 +3,6 @@ package gqlResolver
 import (
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/service"
-	"github.com/graph-gophers/graphql-go"
 )
 
 type postResolver model.PostResolver
@@ -26,9 +25,9 @@ func (r *Resolver) Post(args struct{ Slug string }) *postResolver {
 // A schema needs to have resolve functions for each field.
 
 // ID :
-func (r *postResolver) ID() graphql.ID {
-	return graphql.ID(r.S.ID)
-}
+// func (r *postResolver) ID() graphql.ID {
+// 	return graphql.ID(r.S.ID)
+// }
 
 // Slug :
 func (r *postResolver) Slug() string {

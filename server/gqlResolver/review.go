@@ -44,9 +44,9 @@ func (r *Resolver) CreateReview(args *struct {
 	return nil
 }
 
-func (r *reviewResolver) ID() string {
-	return r.R.ID
-}
+// func (r *reviewResolver) ID() string {
+// 	return r.R.ID
+// }
 
 func (r *reviewResolver) Stars() *int32 {
 	return r.R.Stars
