@@ -5,7 +5,7 @@ package model
 
 // Post :
 type Post struct {
-	ID    string
+	// ID    string
 	Slug  string
 	Title string
 }

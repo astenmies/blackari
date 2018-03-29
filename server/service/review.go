@@ -5,7 +5,6 @@ import (
 
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/mongo"
-	"github.com/rs/xid"
 )
 
 // InsertOne :
@@ -28,8 +27,8 @@ func InsertOne(args *struct {
 
 	model.Reviews[args.PostSlug] = append(model.Reviews[args.PostSlug], newReview)
 
-	userID := xid.New()
-	newReview.ID = userID.String()
+	// userID := xid.New()
+	// newReview.ID = userID.String()
 
 	// [TODO]: make services independent of collections
 	// Maybe wrap them all together with if statements to avoid code repetitiveness
