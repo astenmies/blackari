@@ -38,3 +38,4 @@ go test ./test
 - MONGO CONTEXT: https://github.com/guregu/db/blob/master/mongo.go
 - MONGO CONTEXT: https://gist.github.com/nmerouze/e0fe8a6883b9ff468810
 - MONGO DB CONTEXT: https://github.com/guregu/db
+- panic: string is not a pointer https://github.com/graph-gophers/graphql-go/issues/96

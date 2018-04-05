@@ -16,12 +16,13 @@ import (
 // - Closes the mgo session
 // - Returns the user that was inserted
 func InsertUser(args *struct {
-	User *model.UserInput
+	Username *string
+	Password *string
 }) *model.User {
 
 	newUser := &model.User{
-		Username: args.User.Username,
-		Password: args.User.Password,
+		Username: args.Username,
+		Password: args.Password,
 	}
 
 	// userID := xid.New()
