@@ -1,0 +1,8 @@
+# Represents a review for a review
+type User {
+    # id: String!
+    # The number of stars this review gave, 1-5
+    username: String
+    # Comment about review
+    password: String
+}

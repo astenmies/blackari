@@ -6,6 +6,8 @@
 // gqlSchema/types/review.graphql
 // gqlSchema/types/reviewInput.graphql
 // gqlSchema/types/schema.graphql
+// gqlSchema/types/user.graphql
+// gqlSchema/types/userInput.graphql
 // DO NOT EDIT!
 
 package gqlSchema
@@ -73,7 +75,7 @@ func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
 
-var _gqlschemaTypesMutationGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\xa9\x2c\x48\x55\xf0\x2d\x2d\x49\x2c\xc9\xcc\xcf\x53\xa8\xe6\x52\x50\x50\x50\x48\x2e\x4a\x4d\x2c\x49\x0d\x4a\x2d\xcb\x4c\x2d\xd7\x28\xc8\x2f\x2e\x09\xce\x29\x4d\xb7\x52\x08\x2e\x29\xca\xcc\x4b\x57\xd4\x51\x28\x02\xcb\x58\x29\x40\x54\x78\xe6\x15\x94\x96\x28\x6a\xc2\xb8\x5c\xb5\x80\x00\x00\x00\xff\xff\x66\x4e\x95\x06\x53\x00\x00\x00")
+var _gqlschemaTypesMutationGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\xa9\x2c\x48\x55\xf0\x2d\x2d\x49\x2c\xc9\xcc\xcf\x53\xa8\xe6\x52\x50\x50\x50\x48\x2e\x4a\x4d\x2c\x49\x0d\x4a\x2d\xcb\x4c\x2d\xd7\x28\xc8\x2f\x2e\x09\xce\x29\x4d\xb7\x52\x08\x2e\x29\xca\xcc\x4b\x57\xd4\x51\x28\x02\xcb\x58\x29\x40\x54\x78\xe6\x15\x94\x96\x28\x6a\xc2\xb8\x48\x26\x84\x16\xa7\x16\x69\x94\x16\xa7\x16\x59\x29\x80\x98\x70\x85\x20\x0e\x57\x2d\x20\x00\x00\xff\xff\x46\xfc\x43\xe5\x7a\x00\x00\x00")
 
 func gqlschemaTypesMutationGraphqlBytes() ([]byte, error) {
 	return bindataRead(
@@ -88,7 +90,7 @@ func gqlschemaTypesMutationGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 83, mode: os.FileMode(436), modTime: time.Unix(1521903301, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 122, mode: os.FileMode(436), modTime: time.Unix(1522963147, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -108,7 +110,7 @@ func gqlschemaTypesPostGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(436), modTime: time.Unix(1522263568, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(436), modTime: time.Unix(1522953605, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -148,7 +150,7 @@ func gqlschemaTypesReviewGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(436), modTime: time.Unix(1522263553, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(436), modTime: time.Unix(1522954703, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -189,6 +191,46 @@ func gqlschemaTypesSchemaGraphql() (*asset, error) {
 	}
 
 	info := bindataFileInfo{name: "gqlSchema/types/schema.graphql", size: 50, mode: os.FileMode(436), modTime: time.Unix(1521835442, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _gqlschemaTypesUserGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x3c\x8d\x3b\x0e\xc2\x30\x10\x44\xfb\x9c\x62\x50\x5a\x28\x28\x68\x68\xb9\x01\x9f\x03\x6c\xc4\x24\x71\x61\x3b\xda\x5d\x27\x42\x88\xbb\x23\x50\x9c\x72\x3e\x7a\xaf\xc5\x95\x93\xd2\x98\xdc\x20\x50\xce\x81\x0b\xfa\xac\x5b\x68\xfc\x35\x11\x0f\xa3\xe2\xdd\x00\x40\x8b\xf0\x3c\xe3\xe6\x1a\xd2\xb0\x5b\x9b\xfb\x48\xa4\x12\x3b\x2a\x72\x0f\x73\x51\x83\x8f\xc1\x2a\x70\x90\x99\x7b\x1c\x0f\xa7\xff\xbf\x18\x35\x49\x64\xa5\xac\x90\x4b\x8e\x91\xc9\x21\x5d\x2e\x5e\xed\xbf\x69\x12\xb3\x25\xeb\x66\x6d\x3e\xdf\x00\x00\x00\xff\xff\xbc\x04\xa4\xdb\xb7\x00\x00\x00")
+
+func gqlschemaTypesUserGraphqlBytes() ([]byte, error) {
+	return bindataRead(
+		_gqlschemaTypesUserGraphql,
+		"gqlSchema/types/user.graphql",
+	)
+}
+
+func gqlschemaTypesUserGraphql() (*asset, error) {
+	bytes, err := gqlschemaTypesUserGraphqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "gqlSchema/types/user.graphql", size: 183, mode: os.FileMode(436), modTime: time.Unix(1522961960, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _gqlschemaTypesUserinputGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x3c\x8d\xb1\xaa\xc2\x40\x10\x45\xfb\x7c\xc5\x85\xb4\xef\x81\x8d\x8d\xad\x95\xb5\xfa\x01\x9b\x78\x49\x56\xdc\x99\x65\x66\xe2\x16\xe2\xbf\x8b\x51\xec\xee\x85\x73\x38\x3d\x4e\x33\x91\xa5\x2e\x01\x1d\xae\x1c\x03\x4e\x09\xb4\x99\x02\xd7\x42\x15\x22\x3b\x46\x63\x8a\x2c\x13\x12\x84\x0d\xc6\x7b\x66\xeb\x3e\xde\xd9\x69\x87\x75\x3d\x3a\x00\xe8\xb1\xf9\xdf\xc2\x23\x99\xaf\x7f\x71\x9a\xa4\xc2\x1d\x8e\x61\x59\xa6\x2f\xb4\xd7\x52\xde\xa9\x34\xe8\x12\x88\x99\xa8\xea\xf1\x07\xad\x91\x55\xd2\x6d\xc5\x6a\x72\x6f\x6a\x97\x9f\xfb\x7c\x05\x00\x00\xff\xff\x0a\x56\x2b\xb7\xb2\x00\x00\x00")
+
+func gqlschemaTypesUserinputGraphqlBytes() ([]byte, error) {
+	return bindataRead(
+		_gqlschemaTypesUserinputGraphql,
+		"gqlSchema/types/userInput.graphql",
+	)
+}
+
+func gqlschemaTypesUserinputGraphql() (*asset, error) {
+	bytes, err := gqlschemaTypesUserinputGraphqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "gqlSchema/types/userInput.graphql", size: 178, mode: os.FileMode(436), modTime: time.Unix(1522961972, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -251,6 +293,8 @@ var _bindata = map[string]func() (*asset, error){
 	"gqlSchema/types/review.graphql": gqlschemaTypesReviewGraphql,
 	"gqlSchema/types/reviewInput.graphql": gqlschemaTypesReviewinputGraphql,
 	"gqlSchema/types/schema.graphql": gqlschemaTypesSchemaGraphql,
+	"gqlSchema/types/user.graphql": gqlschemaTypesUserGraphql,
+	"gqlSchema/types/userInput.graphql": gqlschemaTypesUserinputGraphql,
 }
 
 // AssetDir returns the file names below a certain
@@ -301,6 +345,8 @@ var _bintree = &bintree{nil, map[string]*bintree{
 			"review.graphql": &bintree{gqlschemaTypesReviewGraphql, map[string]*bintree{}},
 			"reviewInput.graphql": &bintree{gqlschemaTypesReviewinputGraphql, map[string]*bintree{}},
 			"schema.graphql": &bintree{gqlschemaTypesSchemaGraphql, map[string]*bintree{}},
+			"user.graphql": &bintree{gqlschemaTypesUserGraphql, map[string]*bintree{}},
+			"userInput.graphql": &bintree{gqlschemaTypesUserinputGraphql, map[string]*bintree{}},
 		}},
 	}},
 }}
