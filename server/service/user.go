@@ -3,6 +3,8 @@ package service
 import (
 	"log"
 
+	"github.com/astenmies/lychee/server/utils"
+
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/mongo"
 )
@@ -15,10 +17,12 @@ import (
 // - Inserts a User
 // - Closes the mgo session
 // - Returns the user that was inserted
-func InsertUser(args *struct {
-	Username *string
-	Password *string
+func InsertUser(args struct {
+	Username string
+	Password string
 }) *model.User {
+
+	log.Println(utils.HashAndSalt(args.Password))
 
 	newUser := &model.User{
 		Username: args.Username,

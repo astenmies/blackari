@@ -3,6 +3,7 @@ package gqlResolver
 import (
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/service"
+	"github.com/davecgh/go-spew/spew"
 )
 
 type userResolver model.UserResolver
@@ -11,11 +12,11 @@ type userResolver model.UserResolver
 // - Returns nil if no args are provided
 // - Inserts a new user into mongodb
 // - Resolves the current user if args are provided
-func (r *Resolver) CreateUser(args *struct {
-	Username *string
-	Password *string
+func (r *Resolver) CreateUser(args struct {
+	Username string
+	Password string
 }) *userResolver {
-
+	spew.Dump(args)
 	result := service.InsertUser(args)
 
 	// Make a type PostResolver out of result.
@@ -26,10 +27,10 @@ func (r *Resolver) CreateUser(args *struct {
 	return nil
 }
 
-func (r *userResolver) Username() *string {
+func (r *userResolver) Username() string {
 	return r.R.Username
 }
 
-func (r *userResolver) Password() *string {
+func (r *userResolver) Password() string {
 	return r.R.Password
 }

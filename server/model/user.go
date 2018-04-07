@@ -4,8 +4,8 @@ package model
 var Users = make(map[string][]*User)
 
 type User struct {
-	Username *string `json:"username" bson:"username,omitempty" `
-	Password *string `json:"password" bson:"password,omitempty"`
+	Username string `json:"username" bson:"username,omitempty" `
+	Password string `json:"password" bson:"password,omitempty"`
 }
 
 type UserResolver struct {
