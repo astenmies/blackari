@@ -3,11 +3,35 @@ package service
 import (
 	"log"
 
+	"github.com/davecgh/go-spew/spew"
+
 	"github.com/astenmies/lychee/server/utils"
+	"gopkg.in/mgo.v2/bson"
 
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/mongo"
 )
+
+// FindUserByUsername :
+// - Opens a mgo session
+// - Finds the user and injects it in result
+// - Closes the session so its resources may be put back in the pool or be collected (depending on the case)
+// - Returns the result
+func FindUserByUsername(username string) *model.User {
+
+	result := &model.User{}
+
+	session, collection := mongo.Get("user")
+	defer session.Close()
+	err := collection.Find(bson.M{"username": username}).Select(bson.M{}).One(&result)
+	spew.Dump(username)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return result
+}
 
 // InsertUser :
 // - Defines a pointer to a User with args
@@ -22,18 +46,14 @@ func InsertUser(args struct {
 	Password string
 }) *model.User {
 
-	log.Println(utils.HashAndSalt(args.Password))
-
 	newUser := &model.User{
 		Username: args.Username,
-		Password: args.Password,
+		Password: utils.HashAndSalt(args.Password),
 	}
 
 	// userID := xid.New()
 	// newUser.ID = userID.String()
 
-	// [TODO]: make services independent of collections
-	// Maybe wrap them all together with if statements to avoid code repetitiveness
 	session, collection := mongo.Get("user")
 
 	defer session.Close()

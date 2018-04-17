@@ -34,5 +34,12 @@ if [ ! -f $GOPATH/bin/realize ] && [ ! -d $GOPATH/src/github.com/oxequa/realize 
 
 fi
 
+if [ ! -f _config/global.json ]; then
+    echo "Creating _config/global.json"
+    cp _config/global.example.json _config/global.json
+    echo "Done."
+    echo ">>> Please open _config/global.json and update it with your config."
+fi
+
 echo "Starting app with realize..."
 realize start --run main.go
