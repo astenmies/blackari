@@ -6,7 +6,6 @@ import (
 	"github.com/astenmies/lychee/server/gqlResolver"
 	"github.com/astenmies/lychee/server/gqlSchema"
 	graphql "github.com/graph-gophers/graphql-go"
-	"github.com/graph-gophers/graphql-go/gqltesting"
 )
 
 func TestQuery(t *testing.T) {
@@ -16,35 +15,4 @@ func TestQuery(t *testing.T) {
 		t.Error(err)
 
 	}
-}
-
-func TestPost(t *testing.T) {
-	rootSchema := graphql.MustParseSchema(gqlSchema.GetRootSchema(), &gqlResolver.Resolver{})
-	slug := "second-post"
-	title := "Hello second post"
-	t.Run("post query", func(t *testing.T) {
-		gqltesting.RunTests(t, []*gqltesting.Test{
-			{
-				Schema: rootSchema,
-				Query: `
-					{
-						post(slug:"` + slug + `") {
-							id
-							slug
-							title
-						}
-					}
-				`,
-				ExpectedResult: `
-					{
-						"post": {
-							"id": "",
-							"slug": "` + slug + `",
-							"title": "` + title + `"
-						}
-					}
-				`,
-			},
-		})
-	})
 }

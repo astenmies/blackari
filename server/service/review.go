@@ -7,7 +7,7 @@ import (
 	"github.com/astenmies/lychee/server/mongo"
 )
 
-// InsertOne :
+// InsertPost :
 // - Defines a pointer to a Review with args
 // - Appends a review to reviews
 // - Generates a userID
@@ -15,7 +15,7 @@ import (
 // - Inserts a Review
 // - Closes the mgo session
 // - Returns the review that was inserted
-func InsertOne(args *struct {
+func InsertPost(args *struct {
 	PostSlug string
 	Review   *model.ReviewInput
 }) *model.Review {

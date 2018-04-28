@@ -12,7 +12,7 @@ type postResolver model.PostResolver
 // - Returns the result as a PostResolver
 func (r *Resolver) Post(args struct{ Slug string }) *postResolver {
 
-	result := service.FindOneBySlug(args.Slug)
+	result := service.FindPostBySlug(args.Slug)
 
 	// Make a type PostResolver out of result.
 	if s := result; s != nil {

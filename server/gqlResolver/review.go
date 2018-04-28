@@ -34,7 +34,7 @@ func (r *Resolver) CreateReview(args *struct {
 		return nil
 	}
 
-	result := service.InsertOne(args)
+	result := service.InsertPost(args)
 
 	// Make a type PostResolver out of result.
 	if s := result; s != nil {

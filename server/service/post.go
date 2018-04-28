@@ -8,12 +8,12 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-// FindOneBySlug :
+// FindPostBySlug :
 // - Opens a mgo session
 // - Finds the post and injects it in result
 // - Closes the session so its resources may be put back in the pool or be collected (depending on the case)
 // - Returns the result
-func FindOneBySlug(slug string) *model.Post {
+func FindPostBySlug(slug string) *model.Post {
 
 	result := &model.Post{}
 
