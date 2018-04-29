@@ -29,7 +29,7 @@ var Schema = `
 	}
 	# The mutation type, represents all updates we can make to our data
 	type Mutation {
-		createReview(episode: Episode!, review: ReviewInput!): Review
+		reviewCreate(episode: Episode!, review: ReviewInput!): Review
 	}
 	# The episodes in the Star Wars trilogy
 	enum Episode {
@@ -352,7 +352,7 @@ func (r *Resolver) Starship(args struct{ ID graphql.ID }) *starshipResolver {
 	return nil
 }
 
-func (r *Resolver) CreateReview(args *struct {
+func (r *Resolver) ReviewCreate(args *struct {
 	Episode string
 	Review  *reviewInput
 }) *reviewResolver {

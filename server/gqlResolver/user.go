@@ -12,7 +12,7 @@ type userResolver model.UserResolver
 // - Returns the result as a PostResolver
 func (r *Resolver) User(args struct{ Username string }) *userResolver {
 
-	result := service.FindUserByUsername(args.Username)
+	result := service.UserFindByUsername(args.Username)
 
 	// Make a type PostResolver out of result.
 	if s := result; s != nil {
@@ -22,15 +22,29 @@ func (r *Resolver) User(args struct{ Username string }) *userResolver {
 	return nil
 }
 
-// CreateUser :
+// func (r *Resolver) UserLogIn(args struct {
+// 	Username string
+// 	Password string
+// }) *userResolver {
+// 	result := service.UserLogIn(args)
+
+// 	// Make a type PostResolver out of result.
+// 	if s := result; s != nil {
+// 		return &userResolver{result}
+// 	}
+
+// 	return nil
+// }
+
+// UserCreate :
 // - Returns nil if no args are provided
 // - Inserts a new user into mongodb
 // - Resolves the current user if args are provided
-func (r *Resolver) CreateUser(args struct {
+func (r *Resolver) UserCreate(args struct {
 	Username string
 	Password string
 }) *userResolver {
-	result := service.InsertUser(args)
+	result := service.UserInsert(args)
 
 	// Make a type PostResolver out of result.
 	if s := result; s != nil {

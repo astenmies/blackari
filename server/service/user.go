@@ -12,12 +12,12 @@ import (
 	"github.com/astenmies/lychee/server/mongo"
 )
 
-// FindUserByUsername :
+// UserFindByUsername :
 // - Opens a mgo session
 // - Finds the user and injects it in result
 // - Closes the session so its resources may be put back in the pool or be collected (depending on the case)
 // - Returns the result
-func FindUserByUsername(username string) *model.User {
+func UserFindByUsername(username string) *model.User {
 
 	result := &model.User{}
 
@@ -33,7 +33,7 @@ func FindUserByUsername(username string) *model.User {
 	return result
 }
 
-// InsertUser :
+// UserInsert :
 // - Defines a pointer to a User with args
 // - Appends a user to users
 // - Generates a userID
@@ -41,7 +41,7 @@ func FindUserByUsername(username string) *model.User {
 // - Inserts a User
 // - Closes the mgo session
 // - Returns the user that was inserted
-func InsertUser(args struct {
+func UserInsert(args struct {
 	Username string
 	Password string
 }) *model.User {

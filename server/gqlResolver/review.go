@@ -18,23 +18,23 @@ func (r *Resolver) Reviews(args struct{ PostSlug string }) []*reviewResolver {
 	return l
 }
 
-// CreateReview :
+// ReviewCreate :
 // - Returns nil if no args are provided
 // - Inserts a new review into mongodb
 // - Appends the review to reviews
 // - Resolves the current review if args are provided
-func (r *Resolver) CreateReview(args *struct {
+func (r *Resolver) ReviewCreate(args *struct {
 	PostSlug string
 	Review   *model.ReviewInput
 }) *reviewResolver {
 
 	// If all fields are nil
-	// "createReview": null (in graphql)
+	// "reviewCreate": null (in graphql)
 	if utils.AllNil(args.Review) {
 		return nil
 	}
 
-	result := service.InsertPost(args)
+	result := service.PostInsert(args)
 
 	// Make a type PostResolver out of result.
 	if s := result; s != nil {

@@ -1,4 +1,4 @@
 type Mutation {
-    createReview(postSlug: String!, review: ReviewInput!): Review
-    createUser(username: String!, password: String!): User
+    reviewCreate(postSlug: String!, review: ReviewInput!): Review
+    userCreate(username: String!, password: String!): User
 }
