@@ -33,6 +33,39 @@ func UserFindByUsername(username string) *model.User {
 	return result
 }
 
+// UserLogin :
+// - Defines a pointer to a User with args
+// - Appends a user to users
+// - Generates a userID
+// - Opens a mgo session
+// - Inserts a User
+// - Closes the mgo session
+// - Returns the user that was inserted
+func UserLogin(args struct {
+	Username string
+	Password string
+}) *model.User {
+
+	newUser := &model.User{
+		Username: args.Username,
+		Password: utils.HashAndSalt(args.Password),
+	}
+
+	// userID := xid.New()
+	// newUser.ID = userID.String()
+
+	// session, collection := mongo.Get("user")
+
+	// defer session.Close()
+	// err := collection.Insert(newUser)
+
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	log.Println("Coucou")
+	return newUser
+}
+
 // UserInsert :
 // - Defines a pointer to a User with args
 // - Appends a user to users
