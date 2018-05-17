@@ -1,0 +1,5 @@
+# The input object sent when someone is creating a new review
+input UserLoginInput {
+	username: String!
+	password: String!
+}

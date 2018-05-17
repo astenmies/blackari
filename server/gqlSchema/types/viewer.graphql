@@ -1,0 +1,4 @@
+type Viewer {
+  id: ID!
+  username: String!
+}

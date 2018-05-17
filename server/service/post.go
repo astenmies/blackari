@@ -24,6 +24,5 @@ func PostFindBySlug(slug string) *model.Post {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	return result
 }
