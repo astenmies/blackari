@@ -1,6 +1,7 @@
 package gqlResolver
 
 import (
+	"context"
 	"errors"
 
 	"github.com/astenmies/lychee/server/model"
@@ -11,10 +12,12 @@ var PublicKey = []byte("secret")
 
 var users = []model.User{
 	{
+		ID:       "1",
 		Username: "seb",
 		Password: "seb",
 	},
 	{
+		ID:       "2",
 		Username: "bb",
 		Password: "bb",
 	},
@@ -24,9 +27,10 @@ var users = []model.User{
 // - Returns nil if no args are provided
 // - Inserts a new user into mongodb
 // - Resolves the current user if args are provided
-func (r *Resolver) UserLogin(args *struct {
+func (r *Resolver) UserLogin(ctx context.Context, args *struct {
 	Input *model.UserLoginInput
 }) (string, error) {
+
 	for _, user := range users {
 		if user.Username == args.Input.Username {
 			if user.Password == args.Input.Password {

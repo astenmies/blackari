@@ -62,7 +62,6 @@ func UserLogin(args struct {
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
-	log.Println("Coucou")
 	return newUser
 }
 

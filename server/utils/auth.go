@@ -2,8 +2,6 @@ package utils
 
 import (
 	"fmt"
-	"log"
-	"strings"
 	"time"
 
 	"github.com/astenmies/lychee/server/model"
@@ -35,10 +33,9 @@ func CheckToken(jwtToken string) (*jwt.Token, error) {
 		}
 		return PublicKey, nil
 	})
-	log.Println(jwtToken)
 
-	parts := strings.Split(jwtToken, ".")
-	log.Println(parts)
+	// parts := strings.Split(jwtToken, ".")
+	// log.Println(parts)
 	if err != nil {
 		return nil, err
 	}
