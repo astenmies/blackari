@@ -104,8 +104,9 @@ func authMiddleware(next http.Handler) http.Handler {
 
 //////// MAIN ////////
 func main() {
+	h := &relay.Handler{Schema: gqlSchema.GraphqlSchema}
 	// Create a handler for /graphql which passes cors for remote requests
-	http.Handle("/graphql", cors.Default().Handler(authMiddleware(&relay.Handler{Schema: gqlSchema.GraphqlSchema})))
+	http.Handle("/graphql", cors.Default().Handler(authMiddleware(h)))
 
 	// Write a GraphiQL page to /
 	fs := http.FileServer(http.Dir("static"))

@@ -20,9 +20,9 @@ func Dummy() {
 
 	// The mock data that we insert.
 	err := collection.Insert(
-		bson.M{"ID": "1", "title": "First post", "slug": "first-post"},
-		bson.M{"ID": "2", "title": "Hello second post", "slug": "second-post"},
-		bson.M{"ID": "3", "title": "Third post", "slug": "third-post"},
+		bson.M{"ID": "1", "title": "First post", "slug": "firstpost"},
+		bson.M{"ID": "2", "title": "Hello second post", "slug": "second"},
+		bson.M{"ID": "3", "title": "Third post", "slug": "thirdpost"},
 	)
 
 	if err != nil {
