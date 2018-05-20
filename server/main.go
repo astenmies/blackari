@@ -2,9 +2,11 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -80,10 +82,35 @@ func parseRequest(w http.ResponseWriter, r *http.Request) {
 func authMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
+		// Read the content
+		buf, bodyErr := ioutil.ReadAll(r.Body)
+		if bodyErr != nil {
+			log.Print("bodyErr ", bodyErr.Error())
+			http.Error(w, bodyErr.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		rdr1 := ioutil.NopCloser(bytes.NewBuffer(buf))
+		rdr2 := ioutil.NopCloser(bytes.NewBuffer(buf))
+		// Restore the to its original state
+		r.Body = rdr2
+
+		// manipulate rd1 only
+		// log.Printf("BODY: %q", rdr1)
+		decoder := json.NewDecoder(rdr1)
+
+		var t test_struct
+		err := decoder.Decode(&t)
+
+		if err != nil {
+			panic(err)
+		}
+		log.Println("json query ---", t.Query)
+		///////////////
 		ctx := r.Context()
 		token := r.Header.Get("Authorization")
 
-		parseRequest(w, r)
+		// parseRequest(w, r)
 
 		jwt, err := utils.CheckToken(token)
 		if err != nil {
@@ -104,9 +131,8 @@ func authMiddleware(next http.Handler) http.Handler {
 
 //////// MAIN ////////
 func main() {
-	h := &relay.Handler{Schema: gqlSchema.GraphqlSchema}
 	// Create a handler for /graphql which passes cors for remote requests
-	http.Handle("/graphql", cors.Default().Handler(authMiddleware(h)))
+	http.Handle("/graphql", cors.Default().Handler(authMiddleware(&relay.Handler{Schema: gqlSchema.GraphqlSchema})))
 
 	// Write a GraphiQL page to /
 	fs := http.FileServer(http.Dir("static"))
