@@ -9,8 +9,6 @@ import (
 	"time"
 
 	"github.com/astenmies/lychee/server/model"
-	"github.com/astenmies/lychee/server/utils"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/fatih/color"
 	"github.com/skratchdot/open-golang/open"
 	"github.com/spf13/viper"
@@ -47,50 +45,43 @@ func (r *Resolver) UserLogin(ctx context.Context, args *struct {
 	conf := &oauth2.Config{
 		ClientID:     viper.GetString("lychee.oauth.google_client_id"),
 		ClientSecret: viper.GetString("lychee.oauth.google_client_secret"),
-		RedirectURL:  "http://google.com",
+		RedirectURL:  "http://localhost:8080/google/callback",
 		Scopes:       []string{"profile", "email"},
 		Endpoint:     google.Endpoint,
 	}
-	// // Redirect user to Google's consent page to ask for permission
-	// // for the scopes specified above.
-	// url := conf.AuthCodeURL("state")
-	// log.Printf("Visit the URL for the auth dialog: %v", url)
-
-	// // Handle the exchange code to initiate a transport.
-	// tok, err := conf.Exchange(ctx, "authorization-code")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// client := conf.Client(ctx, tok)
-
 	// add transport for self-signed certificate to context
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	sslcli := &http.Client{Transport: tr}
 	ctx = context.WithValue(ctx, oauth2.HTTPClient, sslcli)
-	// Redirect user to consent page to ask for permission
+	// Redirect user to Google's consent page to ask for permission
 	// for the scopes specified above.
 	url := conf.AuthCodeURL("state", oauth2.AccessTypeOffline)
+	log.Printf("Visit the URL for the auth dialog: %v", url)
 	log.Println(color.CyanString("You will now be taken to your browser for authentication"))
 	time.Sleep(1 * time.Second)
 	open.Run(url)
-	time.Sleep(1 * time.Second)
-	log.Printf("Authentication URL: %s\n", url)
-	spew.Dump(url)
-	for _, user := range users {
-		if user.Username == args.Input.Username {
-			if user.Password == args.Input.Password {
-				token, err := utils.GenerateToken(user)
-				if err != nil {
-					return "", err
-				}
-				return token, err
-			} else {
-				return "", errors.New("password is incorrect")
-			}
-		}
-	}
+	// // Handle the exchange code to initiate a transport.
+	// tok, err := conf.Exchange(ctx, "authorization-code")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// client := conf.Client(ctx, tok)
+	// spew.Dump(client)
+	// for _, user := range users {
+	// 	if user.Username == args.Input.Username {
+	// 		if user.Password == args.Input.Password {
+	// 			token, err := utils.GenerateToken(user)
+	// 			if err != nil {
+	// 				return "", err
+	// 			}
+	// 			return token, err
+	// 		} else {
+	// 			return "", errors.New("password is incorrect")
+	// 		}
+	// 	}
+	// }
 
 	return "", errors.New("User not found")
 }
