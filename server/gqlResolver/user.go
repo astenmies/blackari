@@ -22,20 +22,6 @@ func (r *Resolver) User(args struct{ Username string }) *userResolver {
 	return nil
 }
 
-// func (r *Resolver) UserLogIn(args struct {
-// 	Username string
-// 	Password string
-// }) *userResolver {
-// 	result := service.UserLogIn(args)
-
-// 	// Make a type PostResolver out of result.
-// 	if s := result; s != nil {
-// 		return &userResolver{result}
-// 	}
-
-// 	return nil
-// }
-
 // UserCreate :
 // - Returns nil if no args are provided
 // - Inserts a new user into mongodb

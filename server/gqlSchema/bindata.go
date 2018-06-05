@@ -92,7 +92,7 @@ func gqlschemaTypesMutationGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 189, mode: os.FileMode(436), modTime: time.Unix(1526677282, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 189, mode: os.FileMode(436), modTime: time.Unix(1528040725, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -252,7 +252,7 @@ func gqlschemaTypesUserlogininputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/userLoginInput.graphql", size: 124, mode: os.FileMode(436), modTime: time.Unix(1526677295, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/userLoginInput.graphql", size: 124, mode: os.FileMode(436), modTime: time.Unix(1528040706, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }

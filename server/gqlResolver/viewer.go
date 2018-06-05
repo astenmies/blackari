@@ -3,6 +3,7 @@ package gqlResolver
 import (
 	"context"
 	"errors"
+	"log"
 
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/utils"
@@ -33,7 +34,9 @@ func (r *Resolver) Viewer(ctx context.Context, args *struct {
 
 	claims, _ := token.Claims.(jwt.MapClaims)
 	id := claims["sub"].(string)
+	log.Println("claims ------------------->", token)
 
+	log.Println("ID ------------------->", id)
 	var user model.User
 
 	for _, u := range users {
