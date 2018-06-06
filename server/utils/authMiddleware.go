@@ -8,8 +8,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-
-	"github.com/astenmies/lychee.bak1/server/utils"
 )
 
 func AuthMiddleware(next http.Handler) http.Handler {
@@ -44,7 +42,7 @@ func AuthMiddleware(next http.Handler) http.Handler {
 
 		// utils.ParseRequest(w, r)
 
-		jwt, err := utils.CheckToken(token)
+		jwt, err := CheckToken(token)
 		if err != nil {
 			fmt.Println(err)
 		} else {
