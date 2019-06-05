@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [ ! -f $GOPATH/bin/go-bindata ] && [ ! -d $GOPATH/src/github.com/jteeuwen/go-bindata  ]; then
+if [ ! -f $GOBIN/go-bindata ]; then
     echo "go-bindata not found. Downloading it for you..."
     go get -u github.com/jteeuwen/go-bindata/...
     if [ $? -eq 0 ]; then
@@ -20,10 +20,10 @@ else
 fi
 
 
-if [ ! -f $GOPATH/bin/realize ] && [ ! -d $GOPATH/src/github.com/oxequa/realize  ]; then
+if [ ! -f $GOBIN/realize ]; then
     
-    echo "go-bindata not found. Downloading it for you..."
-    go get github.com/oxequa/realize
+    echo "realize not found. Downloading it for you..."
+    go get -u github.com/oxequa/realize/...
     
     if [ $? -eq 0 ]; then
         echo "Successfully downloaded realize!"

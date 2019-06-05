@@ -7,7 +7,7 @@ import (
 
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/utils"
-	graphql "github.com/neelance/graphql-go"
+	graphql "github.com/graph-gophers/graphql-go"
 
 	jwt "github.com/dgrijalva/jwt-go"
 )

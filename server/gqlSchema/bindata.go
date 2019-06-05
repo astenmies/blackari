@@ -92,7 +92,7 @@ func gqlschemaTypesMutationGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 189, mode: os.FileMode(436), modTime: time.Unix(1528040725, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 189, mode: os.FileMode(493), modTime: time.Unix(1528040725, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -112,7 +112,7 @@ func gqlschemaTypesPostGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -132,7 +132,7 @@ func gqlschemaTypesQueryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 207, mode: os.FileMode(436), modTime: time.Unix(1526587603, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 207, mode: os.FileMode(493), modTime: time.Unix(1526587603, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -152,7 +152,7 @@ func gqlschemaTypesReviewGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -172,7 +172,7 @@ func gqlschemaTypesReviewinputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/reviewInput.graphql", size: 176, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/reviewInput.graphql", size: 176, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -192,7 +192,7 @@ func gqlschemaTypesSchemaGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/schema.graphql", size: 50, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/schema.graphql", size: 50, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -212,7 +212,7 @@ func gqlschemaTypesUserGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/user.graphql", size: 185, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/user.graphql", size: 185, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -232,7 +232,7 @@ func gqlschemaTypesUserinputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/userInput.graphql", size: 178, mode: os.FileMode(436), modTime: time.Unix(1526490639, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/userInput.graphql", size: 178, mode: os.FileMode(493), modTime: time.Unix(1526490639, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -252,7 +252,7 @@ func gqlschemaTypesUserlogininputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/userLoginInput.graphql", size: 124, mode: os.FileMode(436), modTime: time.Unix(1528040706, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/userLoginInput.graphql", size: 124, mode: os.FileMode(493), modTime: time.Unix(1528040706, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -272,7 +272,7 @@ func gqlschemaTypesViewerGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/viewer.graphql", size: 45, mode: os.FileMode(436), modTime: time.Unix(1526589247, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/viewer.graphql", size: 45, mode: os.FileMode(493), modTime: time.Unix(1526589247, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
