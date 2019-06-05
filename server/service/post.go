@@ -6,6 +6,7 @@ import (
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/mongo"
 	"gopkg.in/mgo.v2/bson"
+	mgo "gopkg.in/mgo.v2"
 )
 
 // PostFindBySlug :
@@ -21,8 +22,16 @@ func PostFindBySlug(slug string) *model.Post {
 	defer session.Close()
 
 	err := collection.Find(bson.M{"slug": slug}).Select(bson.M{}).One(&result)
+	
+	// Not found should not be an error
+	if err == mgo.ErrNotFound { 
+		return nil
+	}
+
 	if err != nil {
 		log.Fatal(err)
 	}
+
+
 	return result
 }
