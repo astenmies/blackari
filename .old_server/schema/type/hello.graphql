@@ -1,4 +1,0 @@
-type Hello {
-    id: ID!
-    content: String!
-}

@@ -12,7 +12,7 @@ import (
 func TestPost(t *testing.T) {
 	// connect to the database
 	rootSchema := graphql.MustParseSchema(gqlSchema.GetRootSchema(), &gqlResolver.Resolver{})
-	slug := "second-post"
+	slug := "second"
 	title := "Hello second post"
 	t.Run("post query", func(t *testing.T) {
 		gqltesting.RunTests(t, []*gqltesting.Test{

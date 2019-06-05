@@ -11,6 +11,8 @@ function fetchQuery (
   cacheConfig,
   uploadables,
 ) {
+  console.log('FETCH --', process.env.RELAY_ENDPOINT)
+
   return fetch(process.env.RELAY_ENDPOINT, {
     method: 'POST',
     headers: {

@@ -3,4 +3,5 @@ type Query {
     post(slug: String!): Post
     reviews(postSlug: String!): [Review]!
     user(username: String!): User
+    viewer(token: String): Viewer
 }

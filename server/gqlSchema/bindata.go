@@ -8,6 +8,8 @@
 // gqlSchema/types/schema.graphql
 // gqlSchema/types/user.graphql
 // gqlSchema/types/userInput.graphql
+// gqlSchema/types/userLoginInput.graphql
+// gqlSchema/types/viewer.graphql
 // DO NOT EDIT!
 
 package gqlSchema
@@ -75,7 +77,7 @@ func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
 
-var _gqlschemaTypesMutationGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\xa9\x2c\x48\x55\xf0\x2d\x2d\x49\x2c\xc9\xcc\xcf\x53\xa8\xe6\x52\x50\x50\x50\x48\x2e\x4a\x4d\x2c\x49\x0d\x4a\x2d\xcb\x4c\x2d\xd7\x28\xc8\x2f\x2e\x09\xce\x29\x4d\xb7\x52\x08\x2e\x29\xca\xcc\x4b\x57\xd4\x51\x28\x02\xcb\x58\x29\x40\x54\x78\xe6\x15\x94\x96\x28\x6a\xc2\xb8\x48\x26\x84\x16\xa7\x16\x69\x94\x16\xa7\x16\xe5\x25\xe6\xa6\x22\xe9\x2f\x48\x2c\x2e\x2e\xcf\x2f\x4a\x81\x0b\x69\x5a\x29\x80\xd4\x72\xd5\x02\x02\x00\x00\xff\xff\x6f\x3e\x76\xa4\x8e\x00\x00\x00")
+var _gqlschemaTypesMutationGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x4c\x8d\x41\x0a\x02\x31\x0c\x45\xf7\x73\x8a\x3f\xbb\x19\xf0\x04\xdd\xba\x12\x74\xe3\xe0\x01\x0a\x86\x52\xd0\xb4\x24\xa9\x83\x88\x77\x97\xa9\xb5\xb8\x4a\xf2\x3f\xef\xc5\x9e\x99\x70\x2a\xe6\x2d\x26\xc6\x6b\x00\x00\xa1\x47\xa4\x75\x2f\xe4\x8d\xa6\x9c\xd4\x96\x5b\x09\x0e\x8b\x49\xe4\x30\xee\x5a\xef\x70\xae\xf3\xc0\xb9\xd8\x38\xff\xce\x6a\x28\x4a\xd2\xf8\x6d\x65\x7f\xa7\x3f\x3e\x7b\xd5\x35\xc9\xb5\x47\xb3\xc3\x45\x49\x3a\x7a\x4c\x21\xf2\x14\x37\xf1\xb7\xa9\x41\x7f\xd4\xa8\xe1\xfd\x09\x00\x00\xff\xff\x19\x22\x90\xfc\xbd\x00\x00\x00")
 
 func gqlschemaTypesMutationGraphqlBytes() ([]byte, error) {
 	return bindataRead(
@@ -90,7 +92,7 @@ func gqlschemaTypesMutationGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 142, mode: os.FileMode(436), modTime: time.Unix(1522965026, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/mutation.graphql", size: 189, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -110,12 +112,12 @@ func gqlschemaTypesPostGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(436), modTime: time.Unix(1522953605, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/post.graphql", size: 64, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
 
-var _gqlschemaTypesQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x5c\xcb\x31\x0e\xc2\x30\x10\x44\xd1\x3e\xa7\x98\x88\xc6\x34\x1c\x20\xa7\x00\x02\x15\xa2\x48\x31\x24\x96\x8c\x6d\xed\xae\x41\x16\xe2\xee\x28\xa6\x41\x34\xd3\xfc\x37\x1b\x9c\x16\xe2\x50\x28\x15\x56\x33\x21\xcc\x42\x65\x34\xc5\x14\x02\xd2\x0d\xb6\x10\x8c\x26\x15\x39\xf9\x68\xba\xeb\x1a\xfc\x7e\x5e\x1d\x00\xe4\xa4\xe6\x34\x94\x79\xc0\x68\xe2\xe3\xdc\x6f\x07\xec\x93\x5a\xab\xc2\x87\xe7\x53\xdd\xaa\xc6\x3f\x74\x39\xb6\x78\xed\x9b\x2c\x4a\x71\xeb\xc4\xe9\xce\x5f\x76\x56\x4a\xf7\xfe\x04\x00\x00\xff\xff\x5c\x27\x32\x7b\xad\x00\x00\x00")
+var _gqlschemaTypesQueryGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x5c\xcb\x31\x0e\x82\x40\x10\x85\xe1\x9e\x53\x3c\x62\xb3\x34\x1e\x80\x53\xa8\xa8\x8d\xb1\xa0\x78\x02\x11\x77\x37\x33\x83\x86\x18\xef\x6e\x18\x63\x62\x6c\xa6\x98\xff\x7b\x2b\xec\x7b\x62\x3b\x51\x66\xd8\x9c\x09\x61\x16\x2a\xa3\x29\xda\x71\x44\xba\xc0\x7a\x82\xd1\x64\x46\x4e\x43\x34\x5d\x17\x0e\x3f\x9b\x67\x01\x00\x39\xa9\x05\x1d\xa7\xae\x46\x63\x32\xc4\xae\xac\x6a\x6c\x92\x9a\x57\xe1\x7d\xe0\x43\xc3\xa2\x9a\x3f\x74\xda\x79\x3c\x97\x2e\x27\xa5\x84\xe5\xc4\xf6\xc6\x5f\x76\x50\x8a\x8b\x05\x53\x82\xa5\x2b\xe3\x17\x54\x35\x8e\xfe\x2e\x5e\xef\x00\x00\x00\xff\xff\x0e\xef\x36\xd6\xcf\x00\x00\x00")
 
 func gqlschemaTypesQueryGraphqlBytes() ([]byte, error) {
 	return bindataRead(
@@ -130,7 +132,7 @@ func gqlschemaTypesQueryGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 173, mode: os.FileMode(436), modTime: time.Unix(1523098355, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/query.graphql", size: 207, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -150,7 +152,7 @@ func gqlschemaTypesReviewGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(436), modTime: time.Unix(1522954703, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/review.graphql", size: 181, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -170,7 +172,7 @@ func gqlschemaTypesReviewinputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/reviewInput.graphql", size: 176, mode: os.FileMode(436), modTime: time.Unix(1521845195, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/reviewInput.graphql", size: 176, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -190,7 +192,7 @@ func gqlschemaTypesSchemaGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/schema.graphql", size: 50, mode: os.FileMode(436), modTime: time.Unix(1521835442, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/schema.graphql", size: 50, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -210,7 +212,7 @@ func gqlschemaTypesUserGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/user.graphql", size: 185, mode: os.FileMode(436), modTime: time.Unix(1523091026, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/user.graphql", size: 185, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -230,7 +232,47 @@ func gqlschemaTypesUserinputGraphql() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "gqlSchema/types/userInput.graphql", size: 178, mode: os.FileMode(436), modTime: time.Unix(1522961972, 0)}
+	info := bindataFileInfo{name: "gqlSchema/types/userInput.graphql", size: 178, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _gqlschemaTypesUserlogininputGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x44\xcb\xc1\x09\x02\x41\x0c\x85\xe1\xf3\x4e\x15\x4f\xec\xc2\x0e\x04\x6f\x6a\x01\xe3\xfa\x98\x8d\xb0\xc9\x92\x64\x9c\x83\xd8\xbb\xa0\x07\x8f\xff\x0f\xdf\x1e\x97\x85\x10\xdd\x7a\xc2\x6e\x0f\xce\x89\xa0\x26\xc6\x42\x45\xd8\x4a\x53\x42\x02\xb3\xb3\xa6\x68\x43\x85\x72\xc0\xf9\x14\x8e\xf2\x73\xd7\xa0\x9f\xac\x89\x1e\xbf\xf9\x2a\x53\x0f\xba\xd6\x95\x07\x9c\xd3\x45\xdb\xae\x4c\x5b\x8d\x18\xe6\xf7\xff\x7a\x7f\x02\x00\x00\xff\xff\x66\x52\x11\x08\x7c\x00\x00\x00")
+
+func gqlschemaTypesUserlogininputGraphqlBytes() ([]byte, error) {
+	return bindataRead(
+		_gqlschemaTypesUserlogininputGraphql,
+		"gqlSchema/types/userLoginInput.graphql",
+	)
+}
+
+func gqlschemaTypesUserlogininputGraphql() (*asset, error) {
+	bytes, err := gqlschemaTypesUserlogininputGraphqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "gqlSchema/types/userLoginInput.graphql", size: 124, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
+	a := &asset{bytes: bytes, info: info}
+	return a, nil
+}
+
+var _gqlschemaTypesViewerGraphql = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x2a\xa9\x2c\x48\x55\x08\xcb\x4c\x2d\x4f\x2d\x52\xa8\xe6\x52\x50\xc8\x4c\xb1\x52\xf0\x74\x51\xe4\x52\x50\x28\x2d\x4e\x2d\xca\x4b\xcc\x4d\xb5\x52\x08\x2e\x29\xca\xcc\x4b\x57\xe4\xaa\x05\x04\x00\x00\xff\xff\x8d\xe9\x9b\x31\x2d\x00\x00\x00")
+
+func gqlschemaTypesViewerGraphqlBytes() ([]byte, error) {
+	return bindataRead(
+		_gqlschemaTypesViewerGraphql,
+		"gqlSchema/types/viewer.graphql",
+	)
+}
+
+func gqlschemaTypesViewerGraphql() (*asset, error) {
+	bytes, err := gqlschemaTypesViewerGraphqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "gqlSchema/types/viewer.graphql", size: 45, mode: os.FileMode(493), modTime: time.Unix(1559766665, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -295,6 +337,8 @@ var _bindata = map[string]func() (*asset, error){
 	"gqlSchema/types/schema.graphql": gqlschemaTypesSchemaGraphql,
 	"gqlSchema/types/user.graphql": gqlschemaTypesUserGraphql,
 	"gqlSchema/types/userInput.graphql": gqlschemaTypesUserinputGraphql,
+	"gqlSchema/types/userLoginInput.graphql": gqlschemaTypesUserlogininputGraphql,
+	"gqlSchema/types/viewer.graphql": gqlschemaTypesViewerGraphql,
 }
 
 // AssetDir returns the file names below a certain
@@ -347,6 +391,8 @@ var _bintree = &bintree{nil, map[string]*bintree{
 			"schema.graphql": &bintree{gqlschemaTypesSchemaGraphql, map[string]*bintree{}},
 			"user.graphql": &bintree{gqlschemaTypesUserGraphql, map[string]*bintree{}},
 			"userInput.graphql": &bintree{gqlschemaTypesUserinputGraphql, map[string]*bintree{}},
+			"userLoginInput.graphql": &bintree{gqlschemaTypesUserlogininputGraphql, map[string]*bintree{}},
+			"viewer.graphql": &bintree{gqlschemaTypesViewerGraphql, map[string]*bintree{}},
 		}},
 	}},
 }}
