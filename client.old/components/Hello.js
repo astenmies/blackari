@@ -19,12 +19,12 @@ class Hello extends React.Component {
           operationName="post"
           variables=""
           render={({ error, props }) => {
-            console.log('PROPS --', props)
+            console.log("PROPS --", props);
             if (error) {
               return <div>{error.message}</div>;
             } else if (props) {
-              let post = props.post || {}
-              
+              let post = props.post || {};
+
               return (
                 <div>
                   This comes from Lychee server:

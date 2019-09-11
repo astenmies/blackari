@@ -1,0 +1,74 @@
+# source: http://localhost:8080/graphql
+# timestamp: Wed Sep 11 2019 22:00:13 GMT+0200 (Central European Summer Time)
+
+type Mutation {
+  reviewCreate(postSlug: String!, review: ReviewInput!): Review
+  userCreate(username: String!, password: String!): User
+}
+
+type Post {
+  """id: ID!"""
+  slug: String!
+  title: String!
+}
+
+"""The Query type represents all of the entry points."""
+type Query {
+  post(slug: String!): Post
+  reviews(postSlug: String!): [Review]!
+  user(username: String!): User
+  viewer(token: String): Viewer
+}
+
+"""Represents a review for a review"""
+type Review {
+  """
+  id: String!
+  The number of stars this review gave, 1-5
+  """
+  stars: Int
+
+  """Comment about review"""
+  commentary: String
+}
+
+"""The input object sent when someone is creating a new review"""
+input ReviewInput {
+  """0-5 stars"""
+  stars: Int
+
+  """Comment about the post, optional"""
+  commentary: String
+}
+
+"""Represents a review for a review"""
+type User {
+  """
+  id: String!
+  The number of stars this review gave, 1-5
+  """
+  username: String!
+
+  """Comment about review"""
+  password: String!
+}
+
+"""The input object sent when someone is creating a new review"""
+input UserInput {
+  """0-5 stars"""
+  username: String
+
+  """Comment about the post, optional"""
+  password: String
+}
+
+"""The input object sent when someone is creating a new review"""
+input UserLoginInput {
+  username: String!
+  password: String!
+}
+
+type Viewer {
+  id: ID!
+  username: String!
+}

@@ -1,34 +1,37 @@
 {
-  "name": "lychee-client",
-  "version": "3.0.3",
-  "description": "Lychee client uses Next.js with Relay Modern SSR",
+  "name": "minimal-next-relay",
+  "version": "1.0.0",
+  "description": "Example of Next.js with Relay Modern SSR and a Graphql Server with Express",
   "scripts": {
-    "dev": "next",
+    "schema": "graphql get-schema",
+    "dpredev": "npm run relay",
+    "ddev": "node server",
+    "dev": "NODE_ENV=development nodemon --exec babel-node server",
     "build": "next build",
-    "start": "next start",
-    "relay": "relay-compiler --src ./ --exclude **/.next/** **/node_modules/** **/test/**  **/__generated__/** --schema ./schema/schema.graphql",
-    "schema": "get-graphql-schema http://localhost:8080/graphql > ./schema/schema.graphql"
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node server",
+    "relay": "relay-compiler --src ./ --exclude '**/.next/**' '**/node_modules/**' '**/test/**'  '**/__generated__/**' '**/server/**' --schema ./server/schema.graphql --verbose"
   },
-  "author": "Asten Mies",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
-    "gsap": "^2.0.1",
-    "isomorphic-unfetch": "^2.0.0",
-    "next": "^6.0.3",
-    "next-page-transitions": "^1.0.0-alpha.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.4.0",
-    "react-relay": "^1.4.1",
-    "styled-components": "^3.3.2"
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.1.1",
+    "graphql-relay": "^0.6.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.15",
+    "next": "latest",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-relay": "^5.0.0"
   },
   "devDependencies": {
-    "babel-plugin-inline-react-svg": "^0.5.2",
-    "babel-plugin-relay": "^1.4.1",
-    "babel-plugin-styled-components": "^1.5.1",
-    "get-graphql-schema": "^2.1.1",
-    "graphql-cli": "^2.15.8",
-    "relay-compiler": "^1.4.1"
+    "@babel/node": "^7.6.1",
+    "babel-plugin-relay": "^2.0.0",
+    "graphql-cli": "^1.0.0-beta.4",
+    "nodemon": "^1.19.2",
+    "relay-compiler": "^2.0.0"
   }
 }
