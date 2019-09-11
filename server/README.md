@@ -13,6 +13,28 @@
 go test ./test
 ```
 
+## Example queries/mutations
+
+Post :
+
+```
+{
+post(slug: "second") {
+      title
+    }
+}
+```
+Login :
+
+```
+mutation {
+  userLogin(input: {
+    username: "sebastien@dolbecke.com",
+    password: "coucou"
+  })
+}
+```
+
 ## Notes
 ### string vs *string
 If a schema defines a value as String!, use string. If it defines the value as String, use *string. More info: [when to use *string](https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html) and [panic: string is not a pointer](https://github.com/graph-gophers/graphql-go/issues/96)
