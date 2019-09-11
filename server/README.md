@@ -18,6 +18,7 @@ go test ./test
 If a schema defines a value as String!, use string. If it defines the value as String, use *string. More info: [when to use *string](https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html) and [panic: string is not a pointer](https://github.com/graph-gophers/graphql-go/issues/96)
 
 ## References
+- https://www.thepolyglotdeveloper.com/2017/07/consume-restful-api-endpoints-golang-application/
 - https://github.com/graph-gophers/graphql-go
 - https://github.com/tonyghita/graphql-go-example
 - https://github.com/nilstgmd/graphql-starter-kit
