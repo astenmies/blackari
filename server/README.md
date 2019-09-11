@@ -7,17 +7,55 @@
 ```
 
 ## Testing
+
 ```bash
 # In lychee/server
 
 go test ./test
 ```
 
+## Example queries/mutations
+
+Post :
+
+```
+{
+post(slug: "second") {
+      title
+    }
+}
+```
+
+userCreate :
+
+```
+mutation {
+  userCreate(username: "user@email.com", password: "hello")
+	{
+    username
+  }
+}
+```
+
+user :
+
+```
+{
+user(username: "user@email.com") {
+      username
+      email
+    }
+}
+```
+
 ## Notes
-### string vs *string
+
+### string vs \*string
+
 If a schema defines a value as String!, use string. If it defines the value as String, use *string. More info: [when to use *string](https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html) and [panic: string is not a pointer](https://github.com/graph-gophers/graphql-go/issues/96)
 
 ## References
+
 - https://www.thepolyglotdeveloper.com/2017/07/consume-restful-api-endpoints-golang-application/
 - https://github.com/graph-gophers/graphql-go
 - https://github.com/tonyghita/graphql-go-example
@@ -44,4 +82,4 @@ If a schema defines a value as String!, use string. If it defines the value as S
 - MONGO CONTEXT: https://gist.github.com/nmerouze/e0fe8a6883b9ff468810
 - MONGO DB CONTEXT: https://github.com/guregu/db
 - panic: string is not a pointer https://github.com/graph-gophers/graphql-go/issues/96
-- When to use *string https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html
+- When to use \*string https://dhdersch.github.io/golang/2016/01/23/golang-when-to-use-string-pointers.html

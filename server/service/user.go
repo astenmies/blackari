@@ -8,6 +8,7 @@ import (
 	"github.com/astenmies/lychee/server/utils"
 	"gopkg.in/mgo.v2/bson"
 
+	"github.com/rs/xid"
 	"github.com/astenmies/lychee/server/model"
 	"github.com/astenmies/lychee/server/mongo"
 )
@@ -51,17 +52,18 @@ func UserLogin(args struct {
 		Password: utils.HashAndSalt(args.Password),
 	}
 
-	// userID := xid.New()
-	// newUser.ID = userID.String()
+	userID := xid.New()
+	newUser.ID = userID.String()
 
-	// session, collection := mongo.Get("user")
+	session, collection := mongo.Get("user")
+	spew.Dump(session)
 
-	// defer session.Close()
-	// err := collection.Insert(newUser)
+	defer session.Close()
+	err := collection.Insert(newUser)
 
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	if err != nil {
+		log.Fatal(err)
+	}
 	return newUser
 }
 

@@ -39,12 +39,6 @@ func (r *Resolver) Viewer(ctx context.Context, args *struct {
 	log.Println("ID ------------------->", id)
 	var user model.User
 
-	for _, u := range users {
-		if id == string(u.ID) {
-			user = u
-		}
-	}
-
 	return &viewerResolver{
 		User: user,
 	}, nil

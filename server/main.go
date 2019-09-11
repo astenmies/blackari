@@ -30,7 +30,7 @@ type Handler struct {
 func main() {
 
 	// Create a handler for /graphql which passes cors for remote requests
-	http.Handle("/graphql", cors.Default().Handler(utils.AuthMiddleware(&relay.Handler{Schema: gqlSchema.GraphqlSchema})))
+	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: gqlSchema.GraphqlSchema}))
 
 	// Write a GraphiQL page to /
 	fs := http.FileServer(http.Dir("static"))
