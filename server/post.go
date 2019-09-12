@@ -2,15 +2,17 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"log"
 
 	graphql "github.com/graph-gophers/graphql-go"
 	"github.com/pkg/errors"
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 type Post struct {
-	ID    uint
-	Title string
+	ID    uint   `json:"id"`
+	Title string `json:"title"`
 }
 
 type PostResolver struct {
@@ -18,13 +20,18 @@ type PostResolver struct {
 	m  Post
 }
 
-// getPost should authorize the user in ctx and return a pet or error
-func (db *DB) getPost(ctx context.Context, id uint) (*Post, error) {
-	result := Post{}
-	err := db.DB.C("post").Find(bson.M{"id": id}).One(&result)
+// getPost should authorize the user in ctx and return a post or error
+func (db *DB) getPost(ctx context.Context, filter bson.M) (*Post, error) {
+	var result Post
+
+	// https://www.mongodb.com/blog/post/mongodb-go-driver-tutorial
+	collection := db.Client.Database("lychee").Collection("post")
+	err := collection.FindOne(context.TODO(), filter).Decode(&result)
 
 	if err != nil {
-		return nil, err
+		log.Println(err)
+		// Throw graphql error here!
+		return nil, fmt.Errorf("%s", err)
 	}
 
 	return &result, nil
@@ -33,10 +40,10 @@ func (db *DB) getPost(ctx context.Context, id uint) (*Post, error) {
 func (r *Resolver) GetPost(ctx context.Context, args struct{ ID graphql.ID }) (*PostResolver, error) {
 	id, err := gqlIDToUint(args.ID)
 	if err != nil {
-		return nil, errors.Wrap(err, "GetPet")
+		return nil, errors.Wrap(err, "GetPost")
 	}
 
-	post, err := r.db.getPost(ctx, id)
+	post, err := r.db.getPost(ctx, bson.M{"id": id})
 	if err != nil {
 		return nil, err
 	}
