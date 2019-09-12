@@ -1,57 +1,71 @@
-// Embedded in this article https://medium.com/p/c98e491015b6
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
 
-	gqlResolver "github.com/astenmies/lychee/server/gqlResolver"
-	gqlSchema "github.com/astenmies/lychee/server/gqlSchema"
-	mongo "github.com/astenmies/lychee/server/mongo"
-	utils "github.com/astenmies/lychee/server/utils"
+	"github.com/astenmies/lychee/server/schema"
 	graphql "github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
+	"github.com/pkg/errors"
 	"github.com/rs/cors"
-	"github.com/spf13/viper"
+	"gopkg.in/mgo.v2"
 )
 
-var PublicKey = []byte("secret")
-
-// https://github.com/CallistoM/go-graphql-auth/blob/master/handler/login.go
-// https://github.com/lpalmes/graphql-go-introduction/blob/viewer/main.go
-// https://medium.com/@matryer/context-keys-in-go-5312346a868d
-// https://jacobmartins.com/2016/02/29/getting-started-with-oauth2-in-go/
-type Handler struct {
-	Schema *graphql.Schema
+type DB struct {
+	DB *mgo.Database
 }
 
-//////// MAIN ////////
-func main() {
+type Resolver struct {
+	db *DB
+}
 
-	// Create a handler for /graphql which passes cors for remote requests
-	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: gqlSchema.GraphqlSchema}))
+func main() {
+	http.Handle("/graphql", cors.Default().Handler(&relay.Handler{Schema: schema.GraphqlSchema}))
 
 	// Write a GraphiQL page to /
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
-	port := viper.GetInt("lychee.server.port")
-	goPort := ":" + strconv.Itoa(port) // Needs ":1234" as port
-	// ListenAndServe starts an HTTP server with a given address and handler.
+	port := 4444
+	goPort := ":" + strconv.Itoa(port)
 	log.Fatal(http.ListenAndServe(goPort, nil))
 }
 
-//////// INIT ////////
+// https://labix.org/mgo
+func newDB(path string, name string) (*DB, error) {
+	session, err := mgo.Dial(path)
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
+	// Optional. Switch the session to a monotonic behavior.
+	session.SetMode(mgo.Monotonic, true)
+	db := session.DB(name)
+	return &DB{db}, nil
+}
+
 func init() {
-	// Init global config
-	utils.InitViper()
+	s := schema.GetRootSchema()
+	db, _ := newDB("localhost", "lychee")
 
 	// MustParseSchema parses a GraphQL schema and attaches the given root resolver.
 	// It returns an error if the Go type signature of the resolvers does not match the schema.
-	gqlSchema.GraphqlSchema = graphql.MustParseSchema(gqlSchema.GetRootSchema(), &gqlResolver.Resolver{})
+	schema.GraphqlSchema = graphql.MustParseSchema(s, &Resolver{db: db}, graphql.UseStringDescriptions())
+}
 
-	// Insert dummy data into mongodb
-	mongo.Dummy()
+func gqlIDP(id uint) *graphql.ID {
+	r := graphql.ID(fmt.Sprint(id))
+	return &r
+}
 
+func gqlIDToUint(i graphql.ID) (uint, error) {
+	r, err := strconv.ParseInt(string(i), 10, 32)
+	if err != nil {
+		return 0, errors.Wrap(err, "GqlIDToUint")
+	}
+
+	return uint(r), nil
 }

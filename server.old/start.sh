@@ -11,7 +11,7 @@ if [ ! -f $GOBIN/go-bindata ]; then
     fi
 fi
 echo "Generating schema..."
-go-bindata -ignore=\.go -pkg=schema -o=schema/bindata.go schema/...
+go-bindata -ignore=\.go -pkg=gqlSchema -o=gqlSchema/bindata.go gqlSchema/...
 
 if [ $? -eq 0 ]; then
     echo "Successfully generated schema!"

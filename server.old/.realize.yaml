@@ -2,19 +2,24 @@ settings:
   legacy:
     force: false
     interval: 0s
+server:
+  status: false
+  open: false
+  port: 5002
+  host: localhost
 schema:
-- name: server
+- name: server2
   path: .
-  args:
-  - main.go
   commands:
     run:
       status: true
+  args:
+  - main.go
   watcher:
-    extensions:
-    - go
     paths:
     - /
+    extensions:
+    - go
     ignored_paths:
     - .git
     - .realize
