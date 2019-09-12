@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 
 	graphql "github.com/graph-gophers/graphql-go"
+	"github.com/labstack/gommon/log"
 	"github.com/pkg/errors"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -29,7 +29,7 @@ func (db *DB) getPost(ctx context.Context, filter bson.M) (*Post, error) {
 	err := collection.FindOne(context.TODO(), filter).Decode(&result)
 
 	if err != nil {
-		log.Println(err)
+		log.Errorf("%s", err)
 		// Throw graphql error here!
 		return nil, fmt.Errorf("%s", err)
 	}
