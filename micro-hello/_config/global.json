@@ -1,0 +1,16 @@
+{
+    "lychee": {
+        "server": {
+            "port": 8080
+        },
+        "mongo": {
+            "host": "localhost",
+            "dbName": "lychee",
+            "maxWait": 5
+        },
+        "oauth": {
+            "google_client_id": "528848535682-bpl0gppm17t10psplmifksaf4nggi5hd.apps.googleusercontent.com",
+            "google_client_secret": "VMy6ErXWuSGkI3K7FtUFsg_z"
+        }
+    }
+}

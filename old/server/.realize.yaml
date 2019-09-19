@@ -1,0 +1,21 @@
+settings:
+  legacy:
+    force: false
+    interval: 0s
+schema:
+- name: server
+  path: .
+  args:
+  - main.go
+  commands:
+    run:
+      status: true
+  watcher:
+    extensions:
+    - go
+    paths:
+    - /
+    ignored_paths:
+    - .git
+    - .realize
+    - vendor

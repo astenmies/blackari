@@ -1,0 +1,9 @@
+schema {
+  query: Query
+}
+
+"The query type, represents all of the entry points into our object graph"
+type Query {
+  getGreeting: String!
+}
+
