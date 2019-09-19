@@ -11,7 +11,7 @@ import (
 )
 
 func Graphql(s string, r interface{}) http.HandlerFunc {
-	schema := graphql.MustParseSchema(s, r, graphql.UseStringDescriptions())
+	schema := graphql.MustParseSchema(s, r)
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		relayHandler := relay.Handler{Schema: schema}
