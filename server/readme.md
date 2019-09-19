@@ -9,3 +9,6 @@ https://medium.com/dev-howto/how-to-use-go-with-mongodb-using-official-mongodb-g
 ###### MongoDB Golang Driver Tutorial
 https://dev.to/eduardohitek/mongodb-golang-driver-tutorial-49e5
 https://github.com/eduardohitek/mongodb-go-example/blob/master/main.go
+
+###### Extending a Struct
+https://pragmacoders.com/blog/extending-a-struct-in-go
