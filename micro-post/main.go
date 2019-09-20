@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/astenmies/lychee/core"
+	"github.com/astenmies/lychee/micro-post/db"
 	"github.com/astenmies/lychee/micro-post/resolvers"
 	"github.com/astenmies/lychee/micro-post/schema"
 )
@@ -33,6 +34,14 @@ func main() {
 
 	http.Handle("/graphql", core.Graphql(s, r))
 	http.Handle("/", core.Playground())
+
+	a := db.DB{}
+
+	w := &resolvers.PP{
+		DB: "world",
+	}
+
+	log.Println(resolvers.Greet(a, w))
 
 	log.Fatal(http.ListenAndServe(":4444", nil))
 }
