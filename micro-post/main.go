@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 
 	"github.com/astenmies/lychee/core"
@@ -29,5 +29,9 @@ func main() {
 	http.Handle("/graphql", core.Graphql(schem, res))
 	http.Handle("/", core.Playground())
 
-	log.Fatal(http.ListenAndServe(":4444", nil))
+	fmt.Println("Starting server on http://localhost:4002")
+	err := http.ListenAndServe(":4002", nil)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 }

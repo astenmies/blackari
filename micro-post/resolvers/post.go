@@ -1,26 +1,23 @@
 package resolvers
 
 import (
+	"context"
+
 	"github.com/astenmies/lychee/micro-post/db"
 	"github.com/astenmies/lychee/micro-post/models"
 	"github.com/graph-gophers/graphql-go"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-type G struct {
-	ID    uint32
-	Title string `json:"title"`
-}
-
 type PostResolver struct {
 	DB    *db.Services
 	model models.Post
 }
 
-func (r *PostResolver) GetPost() (*PostResolver, error) {
+func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *int32 }) (*PostResolver, error) {
 	r.DB.Check("hola")
-
-	post, err := r.DB.GetPostById(bson.M{"id": 1})
+	// id, _ := helpers.IDToUint(args.ID)
+	post, err := r.DB.GetPostById(bson.M{"id": args.ID})
 	if err != nil {
 		return nil, err
 	}

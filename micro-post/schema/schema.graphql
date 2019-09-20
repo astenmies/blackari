@@ -4,7 +4,7 @@ schema {
 
 "The query type, represents all of the entry points into our object graph"
 type Query {
-  getPost: Post
+  getPost(id: ID): Post
 }
 
 "what is needed for a post"

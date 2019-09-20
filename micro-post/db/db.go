@@ -22,7 +22,7 @@ func (s *Services) Check(str string) {
 func (s *Services) GetPostById(filter bson.M) (*models.Post, error) {
 	var result models.Post
 	collection := s.Client.Database("lychee").Collection("post")
-	err := collection.FindOne(context.TODO(), bson.M{"id": uint32(2)}).Decode(&result)
+	err := collection.FindOne(context.TODO(), filter).Decode(&result)
 
 	if err != nil {
 		// log.Errorf("%s", err)

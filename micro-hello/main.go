@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 
 	"github.com/astenmies/lychee/core"
@@ -14,6 +14,7 @@ import (
 type RootResolver struct {
 	resolvers.HelloResolver
 	resolvers.PersonResolver
+	resolvers.PostResolver
 }
 
 // GetSchema returns the schema of Post
@@ -46,5 +47,9 @@ func main() {
 	http.Handle("/graphql", core.Graphql(s, r))
 	http.Handle("/", core.Playground())
 
-	log.Fatal(http.ListenAndServe(":4444", nil))
+	fmt.Println("Starting server on http://localhost:4001")
+	err := http.ListenAndServe(":4001", nil)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
 }
