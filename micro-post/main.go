@@ -10,12 +10,6 @@ import (
 	"github.com/astenmies/lychee/micro-post/schema"
 )
 
-// https://github.com/graph-gophers/graphql-go/issues/106#issuecomment-350231819
-// RootResolver is extended with each "microservice" resolver
-// type RootResolver struct {
-// 	*resolvers.PostResolver
-// }
-
 // GetSchema returns the schema of Post
 func GetSchema() string {
 	s, _ := schema.Asset("schema/schema.graphql")
@@ -25,22 +19,15 @@ func GetSchema() string {
 }
 
 func main() {
-
 	c, _ := core.GetClient()
-
 	schem := GetSchema()
-	deb := &resolvers.DB{c}
-	res := &resolvers.PostResolver{DB: deb}
+	database := &db.Services{c}
+	res := &resolvers.PostResolver{
+		DB: database,
+	}
 
 	http.Handle("/graphql", core.Graphql(schem, res))
 	http.Handle("/", core.Playground())
-
-	database := db.DB{}
-	g := resolvers.GG{
-		DB: &database,
-	}
-
-	log.Println(g.Greet())
 
 	log.Fatal(http.ListenAndServe(":4444", nil))
 }

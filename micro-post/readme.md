@@ -2,6 +2,8 @@
 
 ```
 {
-  getGreeting
+  getPost {
+    title
+  }
 }
 ```
