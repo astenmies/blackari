@@ -1,19 +1,21 @@
 package resolvers
 
-import "github.com/astenmies/lychee/types"
+import (
+	"github.com/astenmies/lychee/micro-post/db"
+	"github.com/davecgh/go-spew/spew"
+)
 
-type PP struct {
-	DB string
+type GG struct {
+	*db.DB
 }
 
-func (w PP) Say() string {
-	return w.DB
-}
+func (g *GG) Greet() *GG {
+	spew.Dump("Greet")
+	spew.Dump(g.Casual("hola"))
 
-type PostDB interface {
-	Casual(s interface{ types.Sayer }) string
-}
+	VV := GG{
+		DB: g.DB,
+	}
 
-func Greet(g interface{ PostDB }, i types.Sayer) string {
-	return g.Casual(i)
+	return &VV
 }

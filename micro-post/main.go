@@ -28,20 +28,19 @@ func main() {
 
 	c, _ := core.GetClient()
 
-	s := GetSchema()
+	schem := GetSchema()
 	deb := &resolvers.DB{c}
-	r := &resolvers.PostResolver{DB: deb}
+	res := &resolvers.PostResolver{DB: deb}
 
-	http.Handle("/graphql", core.Graphql(s, r))
+	http.Handle("/graphql", core.Graphql(schem, res))
 	http.Handle("/", core.Playground())
 
-	a := db.DB{}
-
-	w := &resolvers.PP{
-		DB: "world",
+	database := db.DB{}
+	g := resolvers.GG{
+		DB: &database,
 	}
 
-	log.Println(resolvers.Greet(a, w))
+	log.Println(g.Greet())
 
 	log.Fatal(http.ListenAndServe(":4444", nil))
 }

@@ -2,12 +2,12 @@ package db
 
 import (
 	"fmt"
-
-	"github.com/astenmies/lychee/types"
 )
 
-type DB struct{}
+type DB struct {
+	DB string
+}
 
-func (p DB) Casual(s interface{ types.Sayer }) string {
-	return fmt.Sprintf("Hey %s!", s.Say())
+func (p DB) Casual(s string) string {
+	return fmt.Sprintf("Hey %s!", s)
 }
