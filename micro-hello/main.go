@@ -12,7 +12,7 @@ import (
 // https://github.com/graph-gophers/graphql-go/issues/106#issuecomment-350231819
 // RootResolver is extended with each "microservice" resolver
 type RootResolver struct {
-	resolvers.GreetingResolver
+	resolvers.HelloResolver
 	resolvers.PersonResolver
 }
 

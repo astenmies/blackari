@@ -2,8 +2,8 @@
 
 ```
 {
-  getGreeting
-  from {
+  sayHello
+  to {
     name
   }
 }

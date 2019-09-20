@@ -9,5 +9,6 @@ type Query {
 
 "what is needed for a post"
 type Post {
+  id: ID!
   title: String
 }

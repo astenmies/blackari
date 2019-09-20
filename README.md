@@ -19,3 +19,33 @@ cp client/.env.example client/.env
 ## [Server docs](./server)
 
 ## [Client docs](./client)
+
+
+## Troubleshooting
+
+### Mongodb returns an empty object
+This means that your fields are not exported!
+
+You have something like this:
+
+```
+type Post struct {
+	id    uint32
+	title string `json:"title"`
+}
+
+func GetPost() {
+    var result Post
+	collection := db.Client.Database("lychee").Collection("post")
+	err := collection.FindOne(context.TODO(), bson.M{"id": uint32(2)}).Decode(&result)
+}
+```
+
+Replace by this:
+
+```
+type Post struct {
+	ID    uint32
+	Title string `json:"title"`
+}
+```

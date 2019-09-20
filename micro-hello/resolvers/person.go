@@ -1,16 +1,10 @@
 package resolvers
 
-import (
-	"github.com/astenmies/lychee/types"
-)
-
-type DB types.DB
-
 type PersonResolver struct {
 	name string `json:"name"`
 }
 
-func (r *PersonResolver) From() (*PersonResolver, error) {
+func (r *PersonResolver) To() (*PersonResolver, error) {
 	s := PersonResolver{
 		name: "Sebastien",
 	}
