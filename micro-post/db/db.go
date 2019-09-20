@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/davecgh/go-spew/spew"
+
 	"github.com/astenmies/lychee/micro-post/models"
 	"github.com/astenmies/lychee/types"
 	"github.com/pkg/errors"
@@ -23,6 +25,7 @@ func (s *Services) GetPostById(filter bson.M) (*models.Post, error) {
 	var result models.Post
 	collection := s.Client.Database("lychee").Collection("post")
 	err := collection.FindOne(context.TODO(), filter).Decode(&result)
+	spew.Dump(result)
 
 	if err != nil {
 		// log.Errorf("%s", err)

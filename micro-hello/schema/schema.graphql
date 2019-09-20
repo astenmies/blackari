@@ -11,9 +11,3 @@ type Query {
 type Person {
     name: String
 }
-
-extend type Post {
-  hola: String!
-}
-
-type Post {}

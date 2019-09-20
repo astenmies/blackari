@@ -49,3 +49,6 @@ type Post struct {
 	Title string `json:"title"`
 }
 ```
+
+### Cannot query field "node"
+https://github.com/nautilus/gateway/issues/74#issuecomment-519987797

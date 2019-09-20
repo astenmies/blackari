@@ -14,7 +14,6 @@ import (
 type RootResolver struct {
 	resolvers.HelloResolver
 	resolvers.PersonResolver
-	resolvers.PostResolver
 }
 
 // GetSchema returns the schema of Post

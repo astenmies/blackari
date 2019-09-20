@@ -2,6 +2,7 @@ package resolvers
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/astenmies/lychee/micro-post/db"
 	"github.com/astenmies/lychee/micro-post/models"
@@ -14,10 +15,11 @@ type PostResolver struct {
 	model models.Post
 }
 
-func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *int32 }) (*PostResolver, error) {
+func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *string }) (*PostResolver, error) {
 	r.DB.Check("hola")
-	// id, _ := helpers.IDToUint(args.ID)
-	post, err := r.DB.GetPostById(bson.M{"id": args.ID})
+	id := *args.ID // dereference the pointer
+	fmt.Println(id)
+	post, err := r.DB.GetPostById(bson.M{"id": id})
 	if err != nil {
 		return nil, err
 	}
