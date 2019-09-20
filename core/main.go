@@ -1,10 +1,15 @@
 package core
 
 import (
+	"context"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/astenmies/lychee/core/static"
+	"github.com/astenmies/lychee/types"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
@@ -33,4 +38,18 @@ func GetSchema(path string) (string, error) {
 	}
 
 	return string(b), nil
+}
+
+//GetClient returns a MongoDB Client
+func GetClient() (*types.DB, error) {
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+	client, err := mongo.NewClient(clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = client.Connect(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
+	return &types.DB{client}, nil
 }

@@ -4,11 +4,10 @@ schema {
 
 "The query type, represents all of the entry points into our object graph"
 type Query {
-  getGreeting: String!
-  from: Person
+  getPost: Post
 }
 
-type Person {
-    name: String
+"what is needed for a post"
+type Post {
+  title: String
 }
-

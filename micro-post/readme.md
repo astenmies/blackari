@@ -3,8 +3,5 @@
 ```
 {
   getGreeting
-  from {
-    name
-  }
 }
 ```

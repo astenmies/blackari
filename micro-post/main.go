@@ -5,33 +5,19 @@ import (
 	"net/http"
 
 	"github.com/astenmies/lychee/core"
-	resolvers "github.com/astenmies/lychee/micro-hello/resolvers"
-	"github.com/astenmies/lychee/micro-hello/schema"
+	"github.com/astenmies/lychee/micro-post/resolvers"
+	"github.com/astenmies/lychee/micro-post/schema"
 )
 
 // https://github.com/graph-gophers/graphql-go/issues/106#issuecomment-350231819
 // RootResolver is extended with each "microservice" resolver
 type RootResolver struct {
-	resolvers.GreetingResolver
-	resolvers.PersonResolver
+	resolvers.PostResolver
+	postDB resolvers.DB
 }
 
 // GetSchema returns the schema of Post
 func GetSchema() string {
-	// OPTION 1 - string schema
-	// s := `
-	// 	schema {
-	// 			query: Query
-	// 	}
-	// 	type Query {
-	// 			getGreeting: String!
-	// 	}
-	// `
-
-	// OPTION 2 - Read from file
-	// s, _ := core.GetSchema("schema/schema.graphql")
-
-	// OPTION 3 - Use go-bindata
 	s, _ := schema.Asset("schema/schema.graphql")
 	stringSchema := string(s)
 
