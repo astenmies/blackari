@@ -11,3 +11,4 @@ type Query {
 type Person {
     name: String
 }
+
