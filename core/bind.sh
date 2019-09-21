@@ -1,0 +1,3 @@
+#! /bin/bash
+
+go-bindata -ignore=\.go -pkg=static -o=static/bindata.go static/...
