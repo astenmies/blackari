@@ -1,14 +1,15 @@
 schema {
   query: Query
 }
+interface Node {
+  id: ID!
+}
+type User implements Node {
+  id: ID!
+  firstName: String!
+}
 
-"The query type, represents all of the entry points into our object graph"
 type Query {
-  sayHello: String!
-  to: Person
+  node(id: ID!): Node
+  allUsers: [User!]!
 }
-
-type Person {
-    name: String
-}
-

@@ -11,10 +11,6 @@ import (
 
 // https://github.com/graph-gophers/graphql-go/issues/106#issuecomment-350231819
 // RootResolver is extended with each "microservice" resolver
-type RootResolver struct {
-	resolvers.HelloResolver
-	resolvers.PersonResolver
-}
 
 // GetSchema returns the schema of Post
 func GetSchema() string {
@@ -41,7 +37,7 @@ func GetSchema() string {
 // Can be run as a microservice or consumed by a central server
 func main() {
 	s := GetSchema()
-	r := &RootResolver{}
+	r := &resolvers.Query{}
 
 	http.Handle("/graphql", core.Graphql(s, r))
 	http.Handle("/", core.Playground())

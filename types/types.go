@@ -1,7 +1,18 @@
 package types
 
-import "go.mongodb.org/mongo-driver/mongo"
+import (
+	"github.com/graph-gophers/graphql-go"
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
 type DB struct {
 	*mongo.Client
+}
+
+type Node interface {
+	ID() graphql.ID
+}
+
+type NodeResolver struct {
+	node Node
 }
