@@ -4,18 +4,16 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/astenmies/lychee/micro-post/db"
 	"github.com/astenmies/lychee/micro-post/models"
 	"github.com/graph-gophers/graphql-go"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
 type PostResolver struct {
-	DB    *db.Services
-	model models.Post
+	m models.Post
 }
 
-func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *string }) (*PostResolver, error) {
+func (r *Query) GetPost(ctx context.Context, args struct{ ID *string }) (*PostResolver, error) {
 	r.DB.Check("hola")
 	id := *args.ID // dereference the pointer
 	fmt.Println(id)
@@ -25,8 +23,7 @@ func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *string }) (
 	}
 
 	s := PostResolver{
-		DB:    r.DB,
-		model: *post,
+		m: *post,
 	}
 
 	return &s, nil
@@ -34,10 +31,10 @@ func (r *PostResolver) GetPost(ctx context.Context, args struct{ ID *string }) (
 
 // Title resolves the title field for Post
 func (r *PostResolver) Title() *string {
-	return &r.model.Title
+	return &r.m.Title
 }
 
 // ID resolves the ID field for Post
 func (r *PostResolver) ID() graphql.ID {
-	return graphql.ID(r.model.ID)
+	return graphql.ID(r.m.ID)
 }

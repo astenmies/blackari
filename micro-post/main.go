@@ -22,11 +22,14 @@ func main() {
 	c, _ := core.GetClient()
 	schem := GetSchema()
 	database := &db.Services{c}
-	res := &resolvers.PostResolver{
+	// res := &resolvers.PostResolver{
+	// 	DB: database,
+	// }
+	r := &resolvers.Query{
 		DB: database,
 	}
 
-	http.Handle("/graphql", core.Graphql(schem, res))
+	http.Handle("/graphql", core.Graphql(schem, r))
 	http.Handle("/", core.Playground())
 
 	fmt.Println("Starting server on http://localhost:4002")

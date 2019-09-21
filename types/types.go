@@ -12,7 +12,3 @@ type DB struct {
 type Node interface {
 	ID() graphql.ID
 }
-
-type NodeResolver struct {
-	node Node
-}
